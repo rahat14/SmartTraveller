@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.SearchFragment">
+
+   <LinearLayout
+       android:backgroundTint="@color/white"
+       android:background="@color/white"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <androidx.appcompat.widget.SearchView
+           android:id="@+id/search"
+           app:queryBackground="@null"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_32sdp"
+           android:layout_margin="@dimen/_16sdp"
+           android:background="@drawable/white_back_radius"
+           app:iconifiedByDefault="false"
+           app:queryHint="Search Places To Visit"
+           android:elevation="@dimen/_12sdp"
+           android:layout_marginTop="@dimen/_8sdp"
+           />
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/list"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
+
+   </LinearLayout>
+
+</FrameLayout>
