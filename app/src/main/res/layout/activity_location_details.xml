@@ -165,6 +165,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bookNow"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="@dimen/_30sdp"
                 android:layout_marginVertical="@dimen/_5sdp"
@@ -183,9 +184,11 @@
                 android:text="User Reviews"
                 android:textColor="#152046"
                 android:textSize="@dimen/_16ssp"
+                android:visibility="gone"
                 android:textStyle="bold" />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/reviewList"
+                android:visibility="gone"
                 android:nestedScrollingEnabled="false"
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:layout_marginVertical="@dimen/_5sdp"
