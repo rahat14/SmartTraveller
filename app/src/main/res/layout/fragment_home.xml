@@ -72,7 +72,7 @@
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
-                    android:id="@+id/acceptedBtn"
+                    android:id="@+id/placesBTN"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"

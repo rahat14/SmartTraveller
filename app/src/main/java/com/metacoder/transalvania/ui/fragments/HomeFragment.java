@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.metacoder.transalvania.databinding.FragmentHomeBinding;
 import com.metacoder.transalvania.ui.LocationList;
+import com.metacoder.transalvania.ui.timeline.TimelinePage;
 
 
 public class HomeFragment extends Fragment {
@@ -26,6 +27,11 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         binding.timlineTbn.setOnClickListener(v -> {
+                    startActivity(new Intent(getContext(), TimelinePage.class));
+                }
+        );
+
+        binding.placesBTN.setOnClickListener(v -> {
                     startActivity(new Intent(getContext(), LocationList.class));
                 }
         );

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="5dp"
+    android:id="@+id/row_container"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/headContainer"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_pic"
+            android:layout_width="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:src="@color/black"
+            android:layout_height="35dp"/>
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/profile_pic"
+            android:layout_marginStart="5dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sofia_pro_medium"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="-3dp"
+            android:text="User Name"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_toEndOf="@+id/profile_pic"
+            android:layout_below="@+id/userName"
+            android:layout_marginStart="5dp"
+            android:textSize="11sp"
+            android:textColor="#989898"
+            android:fontFamily="@font/sofia_pro_medium"
+            android:textStyle="bold"
+            android:text="a few seconds ago"
+            android:layout_height="wrap_content"/>
+
+        <ImageButton
+            android:id="@+id/moreBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:visibility="gone"
+            android:foreground="?attr/selectableItemBackground"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/imageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    app:shapeAppearanceOverlay="@style/circleImageView"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/mediaViewer"
+                    android:foreground="#88000000"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder"
+                    android:layout_height="350dp"
+                    />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:id="@+id/playBTn"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_play_circle_filled_white24dp"
+                    android:layout_height="60dp"/>
+
+            </FrameLayout>
+
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/btnContainer"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="-6dp"
+        android:layout_marginStart="20dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/reactBtn"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="-1dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:background="@drawable/ic_react_btn"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/likeNumber"
+            android:text="0"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sofia_pro_medium"
+            android:layout_marginStart="2dp"
+            android:textStyle="bold"
+            android:layout_gravity="bottom"
+            />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:id="@+id/commentBtn"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/comment"
+            android:layout_height="25dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/commentNumber"
+            android:text="0"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sofia_pro_medium"
+            android:layout_marginStart="3dp"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_gravity="bottom"
+            />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:id="@+id/shareBtn"
+            android:foreground="?attr/selectableItemBackground"
+            android:layout_gravity="center"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/share"
+            android:layout_height="25dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            android:textColor="#7A8FA6"
+            android:fontFamily="@font/sofia_pro_medium"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A Few Moments Ago"
+            android:visibility="gone"
+            android:textColor="#7A8FA6"
+            android:textSize="14sp"
+            android:fontFamily="@font/sofia_pro_medium"
+            android:textAlignment="viewEnd"
+            android:layout_gravity="end|center"
+            android:gravity="center|end"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_below="@+id/btnContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/postDesc"
+        android:layout_marginTop="5dp"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/sofia_pro_medium"
+        android:maxLines="2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="25dp"
+        android:text="   "/>
+
+
+
+
+
+
+</LinearLayout>
