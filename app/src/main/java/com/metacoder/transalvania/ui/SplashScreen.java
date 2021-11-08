@@ -28,25 +28,25 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         Handler handler = new Handler();
 
-        PusherOptions options = new PusherOptions() ;
-        options.setCluster("mt1") ;
-
-        Pusher pusher = new Pusher("63c83050cea859d84b65", options);
-        pusher.connect();
+//        PusherOptions options = new PusherOptions() ;
+//        options.setCluster("mt1") ;
+//
+//        Pusher pusher = new Pusher("63c83050cea859d84b65", options);
+//        pusher.connect();
 
 
        // pusher.trigger("my-channel", "my-event", Collections.singletonMap("message", "Hello World"));
 
-        Channel channeleds = pusher.subscribe("my-channel");
+     //   Channel channeleds = pusher.subscribe("my-channel");
 
        // channel.trigger("my-channel", "my-event", Collections.singletonMap("message", "Hello World"));
 
-        channeleds.bind("test", new SubscriptionEventListener() {
-            @Override
-            public void onEvent(PusherEvent event) {
-
-            }
-        });
+//        channeleds.bind("test", new SubscriptionEventListener() {
+//            @Override
+//            public void onEvent(PusherEvent event) {
+//
+//            }
+//        });
 
 
 
@@ -67,7 +67,7 @@ public class SplashScreen extends AppCompatActivity {
                 } else {
 
                     Intent p = new Intent(getApplicationContext(), MainActivity.class);
-                   // startActivity(p);
+                    startActivity(p);
                     finish();
                 }
 
