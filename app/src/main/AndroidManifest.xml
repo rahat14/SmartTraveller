@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TranSalVania"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.LocationList"
+            android:exported="false" />
         <activity android:name=".ui.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,15 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LocationDetails"></activity>
+        <activity android:name=".ui.LocationDetails" />
         <activity android:name=".ui.Register" />
         <activity android:name=".ui.SignIn" />
-        <activity android:name=".ui.WelcomeScreen">
-
-        </activity>
-        <activity android:name=".ui.MainActivity">
-
-        </activity>
+        <activity android:name=".ui.WelcomeScreen"></activity>
+        <activity android:name=".ui.MainActivity"></activity>
     </application>
 
 </manifest>

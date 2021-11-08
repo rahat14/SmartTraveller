@@ -44,7 +44,7 @@ public class SplashScreen extends AppCompatActivity {
         channeleds.bind("test", new SubscriptionEventListener() {
             @Override
             public void onEvent(PusherEvent event) {
-                
+
             }
         });
 
