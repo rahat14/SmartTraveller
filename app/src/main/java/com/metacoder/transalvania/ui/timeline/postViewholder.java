@@ -82,15 +82,15 @@ public class postViewholder extends RecyclerView.ViewHolder {
         if (isImage.contains("false")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 int coloor = R.color.overLayer;
-                mediaContent.setForeground(new ColorDrawable(ContextCompat.getColor(context, coloor)));
-                playBtn.setVisibility(View.VISIBLE);
+             //   mediaContent.setForeground(new ColorDrawable(ContextCompat.getColor(context, coloor)));
+              //  playBtn.setVisibility(View.VISIBLE);
                 //mediaContent.setForeground(Color.parseColor("#88000000"));
             }
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                mediaContent.setForeground(null);
+               // mediaContent.setForeground(null);
             }
-            playBtn.setVisibility(View.GONE);
+         //   playBtn.setVisibility(View.GONE);
         }
 
         if (postText.length() > 0) {

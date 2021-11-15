@@ -3,6 +3,7 @@ package com.metacoder.transalvania.ui.timeline;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,7 +26,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.bumptech.glide.Glide;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -47,7 +49,7 @@ import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.models.ProfileModel;
 import com.metacoder.transalvania.models.counterModel;
 import com.metacoder.transalvania.models.postModel;
-import com.metacoder.transalvania.utils.FilePath;
+import com.metacoder.transalvania.utils.Utils;
 
 import java.io.File;
 import java.util.HashMap;
@@ -60,7 +62,7 @@ public class CreatePostActivity extends AppCompatActivity {
     ImageView imageView;
     String mimetype, filePath, uid;
     FirebaseAuth mauth;
-    String userName, userProfilePic;
+    String userName, userProfilePic, downloadURL = "";
     ImageView closeBtn;
     TextView nextBTn;
     DatabaseReference postRef, counterRef;
@@ -77,6 +79,24 @@ public class CreatePostActivity extends AppCompatActivity {
         String s = cursor.getString(columnIndex);
         cursor.close();
         return s;
+    }
+
+    public static String getMimeType(Context context, Uri uri) {
+        String extension;
+
+        //Check uri format to avoid null
+        if (uri.getScheme().equals(ContentResolver.SCHEME_CONTENT)) {
+            //If scheme is a content
+            final MimeTypeMap mime = MimeTypeMap.getSingleton();
+            extension = mime.getExtensionFromMimeType(context.getContentResolver().getType(uri));
+        } else {
+            //If scheme is a File
+            //This will replace white spaces with %20 and also other special characters. This will avoid returning null values on file name with spaces and special characters.
+            extension = MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(new File(uri.getPath())).toString());
+
+        }
+
+        return extension;
     }
 
     @Override
@@ -116,7 +136,7 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
 
-      //  Uri uri = Uri.parse(filePath);
+        //  Uri uri = Uri.parse(filePath);
 
 //
 //        Glide.with(this)
@@ -134,13 +154,12 @@ public class CreatePostActivity extends AppCompatActivity {
         });
 
         nextBTn.setOnClickListener(v -> {
-            createPost("false" , "d");
-            if (mimetype.contains("image")) {
-                //uploadImage(uri);
+            createPost("true", "d");
+            //    if (mimetype.contains("jpg") || mimetype.contains("jpg")) {
+            //uploadImage(uri);
 
 
-
-            } else {
+            //     } else {
 
 //                if (getDuration(CreatePostActivity.this, uri.toString()) >= 21) {
 //                    Toast.makeText(CreatePostActivity.this, "MORE THAN 20 SECONDS ", Toast.LENGTH_LONG)
@@ -150,7 +169,7 @@ public class CreatePostActivity extends AppCompatActivity {
 //                }
 
 
-            }
+            // }
 
 
         });
@@ -205,41 +224,11 @@ public class CreatePostActivity extends AppCompatActivity {
         // create the post model heres
 
         String key = postRef.push().getKey();
-        //    String postId , userId   , postText , postMediaLink , isImage , likeCount , CommentCount  , userProfileLink , userName;
-        //    long postTime ;
-
-//        String pattern = "yyyy/MM/dd HH:mm:ss";
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-//
-//        String date = simpleDateFormat.format(new Date());
-//
-//
-//        long millis = 0;
-//        System.out.println(date);
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//        try {
-//
-//            Date datee = sdf.parse(date);
-//            millis = datee.getTime();
-//
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//
-//
-//        Log.d("TAG", "SYSTEM CAALLL: "+  System.currentTimeMillis() );
-//
-//        Log.d("TAG", "CUSTOM CAALLL: "+ millis );
-
-        //String postId, String userId, String postText, String postMediaLink, String isImage, String userPicLink, String userName,
-        // long postTime, long likeCount, long commentCount, Map<String, Boolean> likedUser
 
         Map<String, Boolean> likedUser = new HashMap<>();
         likedUser.put("test", false);
         postModel postModel = new postModel(key, uid, postTextt
-                , mediaLink, isImage, userProfilePic, userName, System.currentTimeMillis(), 0,
+                , downloadURL, isImage, userProfilePic, userName, System.currentTimeMillis(), 0,
                 0, likedUser, category);
 
 
@@ -270,18 +259,18 @@ public class CreatePostActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-
     public void goHome() {
-        progressDialog.dismiss();
-        Intent o = new Intent(getApplicationContext(), CreatePostActivity.class);
-        startActivity(o);
+        // progressDialog.dismiss();
         finish();
     }
 
-    public void FileUpload() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference("uploads");
+    public void FileUpload(Uri file) {
+        ProgressDialog dialog = Utils.createDialogue(CreatePostActivity.this, "");
+        dialog.setMessage("Uploading Media...");
+        dialog.show();
 
-        Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference("uploads").child("" + System.currentTimeMillis() + "." + mimetype);
+
 
         UploadTask uploadTask = storageReference.putFile(file);
 
@@ -290,12 +279,12 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                 double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-               // Log.d(TAG, "Upload is " + progress + "% done");
+                // Log.d(TAG, "Upload is " + progress + "% done");
             }
         }).addOnPausedListener(new OnPausedListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onPaused(UploadTask.TaskSnapshot taskSnapshot) {
-              //  Log.d(TAG, "Upload is paused");
+                //  Log.d(TAG, "Upload is paused");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -311,7 +300,6 @@ public class CreatePostActivity extends AppCompatActivity {
         });
 
 
-
 // Register observers to listen for when the download is done or if it fails
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
@@ -320,6 +308,8 @@ public class CreatePostActivity extends AppCompatActivity {
                     throw task.getException();
                 }
                 // Continue with the task to get the download URL
+                downloadURL = storageReference.getDownloadUrl().toString();
+
                 return storageReference.getDownloadUrl();
             }
         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
@@ -327,11 +317,12 @@ public class CreatePostActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
                     Uri downloadUri = task.getResult();
-
-
+                    downloadURL = downloadUri.toString();
+                    dialog.dismiss();
                 } else {
                     // Handle failures
                     // ...
+                    dialog.dismiss();
                 }
             }
         });
@@ -406,30 +397,44 @@ public class CreatePostActivity extends AppCompatActivity {
         super.onStart();
         getOwnData();
     }
+
     private void openGallery() {
-        Intent intent = new Intent(
-                Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        );
-        intent.setType("*/*");
-        String[] mimetypes = {
-                "image/*",
-                "application/pdf",
-                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                "application/msword"
-        };
-        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes) ;
-        startActivityForResult(intent, 123) ;
+
+        ImagePicker.with(this)
+                .start();
+//        Intent intent = new Intent(
+//                Intent.ACTION_PICK,
+//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+//        );
+//        intent.setType("*/*");
+//        String[] mimetypes = {
+//                "image/*",
+//                "application/pdf",
+//                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+//                "application/msword"
+//        };
+//        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
+//        startActivityForResult(intent, 123);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 123 &&   resultCode == Activity.RESULT_OK && data != null){
-            Uri uri = data.getData() ;
-            String path = new FilePath().getPath(getApplicationContext() , uri) ;
-            Log.d("TAG", "onActivityResult: " + path);
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            Uri uri = data.getData();
+
+            File file = new File(String.valueOf(uri));
+            mimetype = getMimeType(getApplicationContext(), uri);
+
+            imageView.setImageURI(uri);
+
+            try {
+                FileUpload(uri);
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "Error : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
         }
 
     }

@@ -14,6 +14,9 @@
         android:theme="@style/Theme.TranSalVania"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.services.BikePage"
+            android:exported="false" />
+        <activity
             android:name=".ui.timeline.CreatePostActivity"
             android:exported="false" />
         <activity
@@ -21,6 +24,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.LocationList"
+            android:exported="false" />
+        <activity
+            android:name=".ui.services.HotelPage"
             android:exported="false" />
         <activity
             android:name=".ui.SplashScreen"

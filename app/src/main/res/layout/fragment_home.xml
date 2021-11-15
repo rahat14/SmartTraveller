@@ -121,7 +121,7 @@
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
-                    android:id="@+id/processingBtn"
+                    android:id="@+id/hotelLIst"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -140,7 +140,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:fontFamily="@font/sofia_pro_medium"
-                        android:text="Processing"
+                        android:text="Hotels"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -161,7 +161,7 @@
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
-                    android:id="@+id/deliveredBtn"
+                    android:id="@+id/bikeList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -178,7 +178,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:fontFamily="@font/sofia_pro_medium"
-                        android:text="Delivered"
+                        android:text="Rental Service"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"

@@ -53,15 +53,15 @@ public class displayAllData extends RecyclerView.Adapter<displayAllData.ItemView
         if (post.isImage.contains("false")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 int coloor = R.color.overLayer;
-                holder.mediaContent.setForeground(new ColorDrawable(ContextCompat.getColor(mContext, coloor)));
-                holder.playBtn.setVisibility(View.VISIBLE);
+            //    holder.mediaContent.setForeground(new ColorDrawable(ContextCompat.getColor(mContext, coloor)));
+                holder.playBtn.setVisibility(View.GONE);
 
                 //mediaContent.setForeground(Color.parseColor("#88000000"));
             }
         } else {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                holder.mediaContent.setForeground(null);
+               // holder.mediaContent.setForeground(null);
                 holder.playBtn.setVisibility(View.GONE);
             }
         }

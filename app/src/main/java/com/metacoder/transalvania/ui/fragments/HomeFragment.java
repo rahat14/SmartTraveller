@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 
 import com.metacoder.transalvania.databinding.FragmentHomeBinding;
 import com.metacoder.transalvania.ui.LocationList;
+import com.metacoder.transalvania.ui.services.BikePage;
+import com.metacoder.transalvania.ui.services.HotelPage;
 import com.metacoder.transalvania.ui.timeline.TimelinePage;
 
 
@@ -33,6 +35,16 @@ public class HomeFragment extends Fragment {
 
         binding.placesBTN.setOnClickListener(v -> {
                     startActivity(new Intent(getContext(), LocationList.class));
+                }
+        );
+
+        binding.hotelLIst.setOnClickListener(v -> {
+                    startActivity(new Intent(getContext(), HotelPage.class));
+                }
+        );
+
+        binding.bikeList.setOnClickListener(v -> {
+                    startActivity(new Intent(getContext(), BikePage.class));
                 }
         );
 
