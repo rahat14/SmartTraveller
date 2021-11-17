@@ -37,7 +37,7 @@ public class viewholderForMyTripList extends RecyclerView.ViewHolder {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mclicklistener.onItemClick(v, getAdapterPosition());
+                mclicklistener.onItemClick(v, getAbsoluteAdapterPosition());
             }
         });
     }

@@ -38,13 +38,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
+
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/placeholder"
+                        android:background="@drawable/travel"
                         android:scaleType="centerCrop" />
-
 
                     <TextView
                         android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/placeholder"
+                        android:background="@drawable/place"
                         android:scaleType="centerCrop" />
 
                     <TextView
@@ -131,7 +131,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/placeholder"
+                        android:background="@drawable/city"
                         android:scaleType="centerCrop" />
 
 
@@ -171,7 +171,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/placeholder" />
+                        android:background="@drawable/rent" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -209,7 +209,7 @@
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
-                    android:id="@+id/salesAnalytics"
+                    android:id="@+id/eventList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -219,7 +219,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/placeholder" />
+                        android:background="@drawable/backpack" />
 
 
                     <TextView
@@ -227,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:fontFamily="@font/sofia_pro_medium"
-                        android:text="Sales Analytics"
+                        android:text="Events"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"

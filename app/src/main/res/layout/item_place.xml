@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_105sdp"
+    android:layout_height="@dimen/_90sdp"
     android:layout_marginHorizontal="@dimen/_12sdp"
     android:layout_marginVertical="@dimen/_10sdp"
     app:cardCornerRadius="@dimen/_14sdp">
@@ -18,7 +18,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2.7"
+            android:layout_weight="2.5"
             android:background="#F2F6FB"
             app:cardBackgroundColor="#F2F6FB"
             app:cardCornerRadius="@dimen/_14sdp">
@@ -37,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/_5sdp"
-            android:layout_weight="4.2"
+            android:layout_weight="4.4"
             android:background="#F2F6FB"
             android:orientation="vertical">
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.metacoder.transalvania.databinding.FragmentHomeBinding;
+import com.metacoder.transalvania.ui.Events.EventPage;
 import com.metacoder.transalvania.ui.LocationList;
 import com.metacoder.transalvania.ui.services.BikePage;
 import com.metacoder.transalvania.ui.services.HotelPage;
@@ -48,6 +49,11 @@ public class HomeFragment extends Fragment {
                 }
         );
 
+
+        binding.eventList.setOnClickListener(v -> {
+                    startActivity(new Intent(getContext(), EventPage.class));
+                }
+        );
 
         return binding.getRoot();
     }
