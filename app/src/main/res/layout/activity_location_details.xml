@@ -83,6 +83,7 @@
                                 android:drawableTint="#9AA9BE"
                                 android:fontFamily="@font/sofia_pro_medium"
                                 android:text="4.5"
+                                android:visibility="invisible"
                                 android:textColor="#9AA9BE"
                                 android:textSize="@dimen/_14ssp" />
 
