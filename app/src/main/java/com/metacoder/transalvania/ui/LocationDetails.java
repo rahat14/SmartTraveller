@@ -9,17 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,8 +31,6 @@ import com.metacoder.transalvania.models.TripModel;
 import com.metacoder.transalvania.viewholders.viewholderForReviewList;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.HashMap;
 
 public class LocationDetails extends AppCompatActivity {
 
@@ -82,42 +78,49 @@ public class LocationDetails extends AppCompatActivity {
         binding.ratingTv.setText(model.getCurrent_rating() + "");
         binding.durationTv.setText(model.getTrip_duration() + "");
 
-
-        binding.bookNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                HashMap<String, Object> map = new HashMap<String, Object>();
-
-                map.put("user_id", uid);
-                map.put("purchase_time", System.currentTimeMillis());
-                map.put("paid", model.getTrip_cost());
-                map.put("trip_id", model.getId());
-
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("purchase_list");
-
-                String key = databaseReference.push().getKey();
-                map.put("trans_id", key);
-
-                databaseReference.child(key).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-
-                        Toast.makeText(getApplicationContext(), "Congratulations , You Have Purchased This Trip", Toast.LENGTH_LONG).show();
-                        finish();
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull @NotNull Exception e) {
-                        Toast.makeText(getApplicationContext(), "Error :  " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        Glide.with(getApplicationContext())
+                .load(model.getMainImage())
+                .error(R.drawable.placeholder)
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .into(binding.imageSlider);
 
 
-            }
-        });
+//        binding.bookNow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//
+//                HashMap<String, Object> map = new HashMap<String, Object>();
+//
+//                map.put("user_id", uid);
+//                map.put("purchase_time", System.currentTimeMillis());
+//                map.put("paid", model.getTrip_cost());
+//                map.put("trip_id", model.getId());
+//
+//                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("purchase_list");
+//
+//                String key = databaseReference.push().getKey();
+//                map.put("trans_id", key);
+//
+//                databaseReference.child(key).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void unused) {
+//
+//                        Toast.makeText(getApplicationContext(), "Congratulations , You Have Purchased This Trip", Toast.LENGTH_LONG).show();
+//                        finish();
+//
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull @NotNull Exception e) {
+//                        Toast.makeText(getApplicationContext(), "Error :  " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//
+//            }
+//        });
 
 
         loadTripData();
@@ -142,7 +145,6 @@ public class LocationDetails extends AppCompatActivity {
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             ProfileModel profileModel = snapshot.getValue(ProfileModel.class);
-
                             holder.setDataToView(getApplicationContext(), model, profileModel);
 
 
