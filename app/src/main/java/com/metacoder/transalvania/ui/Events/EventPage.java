@@ -1,6 +1,8 @@
 package com.metacoder.transalvania.ui.Events;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,7 @@ public class EventPage extends AppCompatActivity implements EventAdapter.ItemCli
         super.onCreate(savedInstanceState);
         binding = ActivityEventPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         binding.eventList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -38,6 +41,15 @@ public class EventPage extends AppCompatActivity implements EventAdapter.ItemCli
         loadedEvents();
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadedEvents() {
@@ -73,5 +85,8 @@ public class EventPage extends AppCompatActivity implements EventAdapter.ItemCli
     @Override
     public void onItemClick(EventModel model) {
 
+        Intent p = new Intent(getApplicationContext(), EventDetails.class);
+        p.putExtra("MODEL", model);
+        startActivity(p);
     }
 }

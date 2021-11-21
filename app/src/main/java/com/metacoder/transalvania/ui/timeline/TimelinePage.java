@@ -14,6 +14,7 @@ import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -63,6 +64,7 @@ public class TimelinePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline_page);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         context = getApplicationContext();
         manager = new LinearLayoutManager(context);
@@ -91,6 +93,14 @@ public class TimelinePage extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void loadPost() {
 
 

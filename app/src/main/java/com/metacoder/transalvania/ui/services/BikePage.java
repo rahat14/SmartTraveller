@@ -1,7 +1,9 @@
 package com.metacoder.transalvania.ui.services;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,8 +17,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.databinding.ActivityBikePageBinding;
+import com.metacoder.transalvania.models.BikeModel;
 import com.metacoder.transalvania.models.HotelModel;
 import com.metacoder.transalvania.viewholders.viewholderForHotelList;
+import com.metacoder.transalvania.viewholders.viewholderForRentalList;
 
 public class BikePage extends AppCompatActivity {
     private ActivityBikePageBinding binding;
@@ -26,22 +30,32 @@ public class BikePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityBikePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         binding.hotelLIst.setLayoutManager(new LinearLayoutManager(this));
         loadTripData();
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void loadTripData() {
         DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Bike_Services");
-        FirebaseRecyclerOptions<HotelModel> options;
-        FirebaseRecyclerAdapter<HotelModel, viewholderForHotelList> firebaseRecyclerAdapter;
+        FirebaseRecyclerOptions<BikeModel> options;
+        FirebaseRecyclerAdapter<BikeModel, viewholderForRentalList> firebaseRecyclerAdapter;
 
-        options = new FirebaseRecyclerOptions.Builder<HotelModel>().setQuery(mref, HotelModel.class).build();
+        options = new FirebaseRecyclerOptions.Builder<BikeModel>().setQuery(mref, BikeModel.class).build();
 
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<HotelModel, viewholderForHotelList>(options) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BikeModel, viewholderForRentalList>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull viewholderForHotelList holder, final int position, @NonNull HotelModel model) {
+            protected void onBindViewHolder(@NonNull viewholderForRentalList holder, final int position, @NonNull BikeModel model) {
 
                 holder.setDataToView(getApplicationContext(), model);
 
@@ -49,10 +63,9 @@ public class BikePage extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        // change intent
-//                        Intent p = new Intent(getApplicationContext(), LocationDetails.class);
-//                        p.putExtra("TRIP_MODEL", model);
-//                        startActivity(p);
+                        Intent p = new Intent(getApplicationContext(), BikeDetails.class);
+                        p.putExtra("MODEL", model);
+                        startActivity(p);
                     }
                 });
 
@@ -60,9 +73,9 @@ public class BikePage extends AppCompatActivity {
 
             @NonNull
             @Override
-            public viewholderForHotelList onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public viewholderForRentalList onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View iteamVIew = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_place, parent, false);
-                final viewholderForHotelList viewholders = new viewholderForHotelList(iteamVIew);
+                final viewholderForRentalList viewholders = new viewholderForRentalList(iteamVIew);
 
                 return viewholders;
             }

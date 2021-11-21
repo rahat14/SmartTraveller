@@ -1,6 +1,8 @@
 package com.metacoder.transalvania.models;
 
-public class EventModel {
+import java.io.Serializable;
+
+public class EventModel implements Serializable {
 
     private int stock;
     private String priceDetails;

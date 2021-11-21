@@ -1,7 +1,9 @@
 package com.metacoder.transalvania.ui.services;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -26,11 +28,21 @@ public class HotelPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHotelPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         binding.hotelLIst.setLayoutManager(new LinearLayoutManager(this));
 
         loadTripData();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadTripData() {
@@ -51,13 +63,14 @@ public class HotelPage extends AppCompatActivity {
                     public void onClick(View v) {
 
                         // change intent
-//                        Intent p = new Intent(getApplicationContext(), LocationDetails.class);
-//                        p.putExtra("TRIP_MODEL", model);
-//                        startActivity(p);
+                        Intent p = new Intent(getApplicationContext(), HotelDetails.class);
+                        p.putExtra("MODEL", model);
+                        startActivity(p);
                     }
                 });
 
             }
+
 
             @NonNull
             @Override
