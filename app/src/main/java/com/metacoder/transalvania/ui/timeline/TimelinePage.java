@@ -1,25 +1,22 @@
 package com.metacoder.transalvania.ui.timeline;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,8 +35,6 @@ import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.models.counterModel;
 import com.metacoder.transalvania.models.postModel;
 import com.metacoder.transalvania.utils.ConvertTime;
-import com.metacoder.transalvania.utils.FilePath;
-import com.metacoder.transalvania.utils.Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -88,7 +84,14 @@ public class TimelinePage extends AppCompatActivity {
         findViewById(R.id.addBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), CreatePostActivity.class));
+
+                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (firebaseUser != null) {
+                    startActivity(new Intent(getApplicationContext(), CreatePostActivity.class));
+                } else {
+                    Toast.makeText(getApplicationContext(), "You Are Not Logged In", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }
@@ -101,6 +104,7 @@ public class TimelinePage extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void loadPost() {
 
 
@@ -315,8 +319,6 @@ public class TimelinePage extends AppCompatActivity {
         postList.setAdapter(firebaseRecyclerAdapter);
 
 
-
-
     }
 
     public void shareContent(Context context, String postText, String medialink) {
@@ -394,8 +396,6 @@ public class TimelinePage extends AppCompatActivity {
 
         });
     }
-
-
 
 
 }
