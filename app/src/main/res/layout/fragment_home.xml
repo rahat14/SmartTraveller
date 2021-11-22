@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ededed"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
 
         <LinearLayout
@@ -248,7 +245,7 @@
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
-                    android:id="@+id/userManagement"
+                    android:id="@+id/emergencyContact"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -257,15 +254,15 @@
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/placeholder"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:background="@drawable/emergencycontact" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:fontFamily="@font/sofia_pro_medium"
-                        android:text="User Manage"
+                        android:text="Emergency Contact"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -285,6 +282,46 @@
             android:layout_margin="8dp"
             android:orientation="horizontal"
             android:weightSum="2">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/nearBy"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                android:padding="10dp"
+                android:visibility="visible"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/nearby" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/sofia_pro_medium"
+                        android:text="NearBy Me"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
@@ -324,45 +361,6 @@
 
 
             </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="160dp"
-                android:layout_margin="4dp"
-                android:visibility="gone"
-                android:layout_weight="1"
-                android:elevation="10dp"
-                android:padding="10dp"
-                app:cardCornerRadius="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:background="@drawable/placeholder"
-                        android:layout_gravity="center" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:fontFamily="@font/sofia_pro_medium"
-                        android:text="User Manage"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-
-            </com.google.android.material.card.MaterialCardView>
-
 
         </LinearLayout>
 

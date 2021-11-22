@@ -39,6 +39,7 @@ public class WelcomeScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
 
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
@@ -58,22 +59,20 @@ public class WelcomeScreen extends AppCompatActivity {
 
         setupView();
 
-        binding.regiterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent p = new Intent(getApplicationContext(), Register.class);
-                startActivity(p);
+        binding.regiterBtn.setOnClickListener(v -> {
+            Intent p = new Intent(getApplicationContext(), Register.class);
+            startActivity(p);
 
-            }
         });
 
-        binding.signinBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent p = new Intent(getApplicationContext(), SignIn.class);
-                startActivity(p);
+        binding.signinBtn.setOnClickListener(v -> {
+            Intent p = new Intent(getApplicationContext(), SignIn.class);
+            startActivity(p);
 
-            }
+        });
+        binding.skipped.setOnClickListener(view -> {
+            Intent p = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(p);
         });
     }
 
@@ -84,9 +83,9 @@ public class WelcomeScreen extends AppCompatActivity {
         binding.imageSlider.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
         binding.imageSlider.startAutoCycle();
         ArrayList<sliderItem> sliderItems = new ArrayList<>();
-        sliderItems.add(new sliderItem(R.drawable.start_image_two));
-        sliderItems.add(new sliderItem(R.drawable.srart_up));
-        sliderItems.add(new sliderItem(R.drawable.strat_images_thress));
+        sliderItems.add(new sliderItem(R.drawable.sunset));
+        sliderItems.add(new sliderItem(R.drawable.ba));
+        sliderItems.add(new sliderItem(R.drawable.beach2));
         SliderAdapterExample adapter = new SliderAdapterExample(getApplicationContext(), sliderItems);
         binding.imageSlider.setSliderAdapter(adapter);
 

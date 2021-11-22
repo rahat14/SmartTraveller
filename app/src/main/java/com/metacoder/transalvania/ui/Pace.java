@@ -7,6 +7,7 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -49,7 +50,11 @@ public class Pace extends AppCompatActivity
      * @see #onRequestPermissionsResult(int, String[], int[])
      */
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-
+    int i = 0;
+    LatLng latLng = null;
+    String[] places = {"Please Select", "Atm", "Hospital", "Hotel", "Restaurant", "Police Station", "Fire Service"};
+    String[] placesType = {"", "Atm", "Hospital", "Hotel", "Restaurant", "Police", "fire_station"};
+    String placeType = "";
     /**
      * Flag indicating whether a requested permission has been denied after returning in
      * {@link #onRequestPermissionsResult(int, String[], int[])}.
@@ -57,19 +62,15 @@ public class Pace extends AppCompatActivity
     private boolean permissionDenied = false;
     private GoogleMap map;
     private PlacesClient placesClient;
-    int i = 0;
     private ActivityPaceBinding binding;
-    LatLng latLng = null;
-    String[] places = {"Please Select", "Atm", "Hospital", "Hotel", "Restaurant", "Police Station", "Fire Service"};
-    String[] placesType = {"", "Atm", "Hospital", "Hotel", "Restaurant", "Police", "fire_station"};
-    String placeType = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityPaceBinding.inflate(getLayoutInflater());
-
         setContentView(binding.getRoot());
+        getSupportActionBar().setTitle("Near Me");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -157,6 +158,16 @@ public class Pace extends AppCompatActivity
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -196,6 +207,23 @@ public class Pace extends AppCompatActivity
 
         new PlaceTask().execute(url);
 
+    }
+
+    private void InsetPlaceMarker(PlaceResponse placeResponse) {
+        map.clear();
+        Toast.makeText(getApplicationContext(), "Showing Result For " + placeType, Toast.LENGTH_LONG).show();
+        for (PlaceResult item : placeResponse.getPlaceResults()) {
+            LatLng latLng = new LatLng(item.getGeometry().getLocation().getLat(), item.getGeometry().getLocation().getLng());
+            String name = item.getName();
+            MarkerOptions options = new MarkerOptions();
+
+            options.position(latLng);
+            options.title(name);
+
+            map.addMarker(options);
+
+
+        }
     }
 
     private class PlaceTask extends AsyncTask<String, Integer, String> {
@@ -240,23 +268,6 @@ public class Pace extends AppCompatActivity
             reader.close();
             Log.d("TAGED", "downloadUrl: " + data);
             return data;
-
-
-        }
-    }
-
-    private void InsetPlaceMarker(PlaceResponse placeResponse) {
-        map.clear();
-        Toast.makeText(getApplicationContext(), "Showing Result For " + placeType, Toast.LENGTH_LONG).show();
-        for (PlaceResult item : placeResponse.getPlaceResults()) {
-            LatLng latLng = new LatLng(item.getGeometry().getLocation().getLat(), item.getGeometry().getLocation().getLng());
-            String name = item.getName();
-            MarkerOptions options = new MarkerOptions();
-
-            options.position(latLng);
-            options.title(name);
-
-            map.addMarker(options);
 
 
         }

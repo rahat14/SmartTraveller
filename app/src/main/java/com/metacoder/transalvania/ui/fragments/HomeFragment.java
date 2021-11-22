@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.metacoder.transalvania.ui.EmergencyContactList;
 import com.metacoder.transalvania.databinding.FragmentHomeBinding;
 import com.metacoder.transalvania.ui.Events.EventPage;
 import com.metacoder.transalvania.ui.LocationList;
+import com.metacoder.transalvania.ui.Pace;
 import com.metacoder.transalvania.ui.services.BikePage;
 import com.metacoder.transalvania.ui.services.HotelPage;
 import com.metacoder.transalvania.ui.timeline.TimelinePage;
@@ -46,6 +48,16 @@ public class HomeFragment extends Fragment {
 
         binding.bikeList.setOnClickListener(v -> {
                     startActivity(new Intent(getContext(), BikePage.class));
+                }
+        );
+
+        binding.emergencyContact.setOnClickListener(v -> {
+                    startActivity(new Intent(getContext(), EmergencyContactList.class));
+                }
+        );
+
+        binding.nearBy.setOnClickListener(v -> {
+                    startActivity(new Intent(getContext(), Pace.class));
                 }
         );
 

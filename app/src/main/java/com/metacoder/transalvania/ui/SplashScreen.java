@@ -27,6 +27,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         Handler handler = new Handler();
+        getSupportActionBar().hide();
 
 //        PusherOptions options = new PusherOptions() ;
 //        options.setCluster("mt1") ;
@@ -65,7 +66,6 @@ public class SplashScreen extends AppCompatActivity {
                  //   finish();
 
                 } else {
-
                     Intent p = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(p);
                     finish();

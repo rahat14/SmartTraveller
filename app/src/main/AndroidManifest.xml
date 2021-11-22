@@ -17,17 +17,17 @@
         android:theme="@style/Theme.TranSalVania"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".EmergencyContactList"
+            android:name=".ui.PlacesCategory"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SuccessPage"
+            android:exported="false" />
+        <activity
+            android:name=".ui.EmergencyContactList"
             android:exported="false" />
         <activity
             android:name=".ui.Pace"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.Events.EventDetails"
             android:exported="false" />
@@ -57,12 +57,20 @@
             android:exported="false" />
         <activity
             android:name=".ui.SplashScreen"
-            android:exported="true"></activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.LocationDetails" />
         <activity android:name=".ui.Register" />
         <activity android:name=".ui.SignIn" />
         <activity android:name=".ui.WelcomeScreen" />
-        <activity android:name=".ui.MainActivity" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:theme="@style/BaseTheme" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

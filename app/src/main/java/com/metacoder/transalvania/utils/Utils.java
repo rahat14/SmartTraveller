@@ -5,6 +5,9 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
+
+import com.metacoder.transalvania.ui.Events.EventDetails;
 
 public class Utils {
 
@@ -17,4 +20,7 @@ public class Utils {
     }
 
 
+    public static void showLOginError(Context context) {
+        Toast.makeText(context, "Please Login...", Toast.LENGTH_SHORT).show();
+    }
 }
