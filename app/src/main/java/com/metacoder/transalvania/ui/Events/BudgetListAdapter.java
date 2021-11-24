@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.metacoder.transalvania.R;
-import com.metacoder.transalvania.models.BudgetModel;
+import com.metacoder.transalvania.models.CalacModel;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -23,10 +23,10 @@ import java.util.List;
 public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.viewholder> {
 
     private final Context context;
-    private List<BudgetModel> items;
+    private List<CalacModel> items;
     private ItemClickListener itemClickListener;
 
-    public BudgetListAdapter(List<BudgetModel> items, Context context, ItemClickListener itemClickListener) {
+    public BudgetListAdapter(List<CalacModel> items, Context context, ItemClickListener itemClickListener) {
         this.items = items;
         this.context = context;
         this.itemClickListener = itemClickListener;
@@ -37,20 +37,20 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.vi
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent,
                                          int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_review, parent, false);
+                .inflate(R.layout.item_calculator, parent, false);
         return new viewholder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
-        BudgetModel item = items.get(position);
+        CalacModel item = items.get(position);
 
         holder.itemView.setOnClickListener(v -> {
             itemClickListener.onItemClick(item);
         });
 
-        holder.title.setText(item.getTitle());
-        holder.desc.setText(item.getLowerLimit() + " - " + item.getUpperLimit() + "");
+        holder.desc.setText(item.getDesc());
+        holder.amt.setText(item.getPrice()+"");
 
     }
 
@@ -64,26 +64,21 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.vi
     }
 
     public interface ItemClickListener {
-        void onItemClick(BudgetModel model);
+        void onItemClick(CalacModel model);
     }
 
     class viewholder extends RecyclerView.ViewHolder {
-        TextView title, desc;
-        RatingBar ratingBar;
-        ImageView tripImage;
+        TextView desc, amt;
+
 
 
         viewholder(@NonNull View mview) {
             super(mview);
 
 
-            title = mview.findViewById(R.id.nameTv);
-            desc = mview.findViewById(R.id.descTv);
-            tripImage = mview.findViewById(R.id.image);
-            ratingBar = mview.findViewById(R.id.rateTv);
 
-            ratingBar.setVisibility(View.GONE);
-            tripImage.setVisibility(View.GONE);
+            desc = mview.findViewById(R.id.descTv);
+            amt = mview.findViewById(R.id.amt);
 
         }
 

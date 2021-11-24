@@ -333,6 +333,54 @@
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
+                    android:id="@+id/budgetCalc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/budget" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/sofia_pro_medium"
+                        android:text="Budget Calculator"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                android:padding="10dp"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
                     android:id="@+id/log_out"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

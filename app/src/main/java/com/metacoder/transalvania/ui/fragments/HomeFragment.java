@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.metacoder.transalvania.ui.BudgetListPage;
 import com.metacoder.transalvania.ui.EmergencyContactList;
 import com.metacoder.transalvania.databinding.FragmentHomeBinding;
 import com.metacoder.transalvania.ui.Events.EventPage;
@@ -54,6 +55,11 @@ public class HomeFragment extends Fragment {
 
         binding.emergencyContact.setOnClickListener(v -> {
                     startActivity(new Intent(getContext(), EmergencyContactList.class));
+                }
+        );
+
+        binding.budgetCalc.setOnClickListener(v -> {
+                    startActivity(new Intent(getContext(), BudgetListPage.class));
                 }
         );
 

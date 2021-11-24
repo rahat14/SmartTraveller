@@ -18,7 +18,12 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.BudgetDetails"
+            android:exported="false"
+            />
+        <activity
+            android:name=".ui.BudgetListPage"
             android:exported="false" />
+
         <activity
             android:name=".ui.PlacesCategory"
             android:exported="false" />

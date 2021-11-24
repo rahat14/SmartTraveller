@@ -5,18 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BudgetModel implements Serializable {
-    String id, total , from , to   , title ;
+    String id, total , from , tol   , title ;
     int upperLimit , lowerLimit ;
     List<CalacModel> breakDowns = new ArrayList<>() ;
 
     public BudgetModel() {
     }
 
-    public BudgetModel(String id, String total, String from, String to, String title, int upperLimit, int lowerLimit, List<CalacModel> breakDowns) {
+    public BudgetModel(String id, String total, String from, String tol, String title, int upperLimit, int lowerLimit, List<CalacModel> breakDowns) {
         this.id = id;
         this.total = total;
         this.from = from;
-        this.to = to;
+        this.tol = tol;
         this.title = title;
         this.upperLimit = upperLimit;
         this.lowerLimit = lowerLimit;
@@ -59,17 +59,18 @@ public class BudgetModel implements Serializable {
         return from;
     }
 
+    public String getTol() {
+        return tol;
+    }
+
+    public void setTol(String tol) {
+        this.tol = tol;
+    }
+
     public void setFrom(String from) {
         this.from = from;
     }
 
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
-    }
 
     public int getUpperLimit() {
         return upperLimit;
