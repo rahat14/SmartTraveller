@@ -148,7 +148,7 @@ public class ProfileFragment extends Fragment {
                                     }
 
                                 }
-                                holder.setDataToView(getContext(), isRated, model, tripModel, ratingModelList);
+                           //     holder.setDataToView(getContext(), isRated, model, tripModel, ratingModelList);
 
                                 double totalSpend = Double.parseDouble(binding.totalSpend.getText().toString());
                                 totalSpend = totalSpend + tripModel.getTrip_cost();
