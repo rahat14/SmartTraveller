@@ -3,12 +3,13 @@ package com.metacoder.transalvania.models;
 import java.io.Serializable;
 
 public class HotelModel implements Serializable {
-    String id, address, admin_id, desc, image, name, range;
+    String id, address, admin_id, desc, image, name, range ;
+      String current_rating ;
 
     public HotelModel() {
     }
 
-    public HotelModel(String id, String address, String admin_id, String desc, String image, String name, String range) {
+    public HotelModel(String id, String address, String admin_id, String desc, String image, String name, String range, String current_rating) {
         this.id = id;
         this.address = address;
         this.admin_id = admin_id;
@@ -16,7 +17,18 @@ public class HotelModel implements Serializable {
         this.image = image;
         this.name = name;
         this.range = range;
+        this.current_rating = current_rating;
     }
+
+    public String getCurrent_rating() {
+        return current_rating;
+    }
+
+    public void setCurrent_rating(String current_rating) {
+        this.current_rating = current_rating;
+    }
+
+
 
     public String getId() {
         return id;

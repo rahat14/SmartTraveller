@@ -49,7 +49,13 @@ public class viewholderForHotelList extends RecyclerView.ViewHolder {
         ImageView tripImage = mview.findViewById(R.id.image);
         RatingBar ratingBar = mview.findViewById(R.id.rateTv);
 
-        ratingBar.setVisibility(View.GONE);
+        try {
+            ratingBar.setRating(Float.parseFloat(model.getCurrent_rating()));
+        } catch (Exception e) {
+            Log.d("TAG", e.getMessage());
+        }
+
+
 
 
         title.setText(model.getName());

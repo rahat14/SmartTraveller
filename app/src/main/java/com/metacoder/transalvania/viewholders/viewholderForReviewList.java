@@ -28,7 +28,7 @@ public class viewholderForReviewList extends RecyclerView.ViewHolder {
 
 
         //item click
-        itemView.setOnClickListener(v -> mclicklistener.onItemClick(v, getAdapterPosition()));
+    //    itemView.setOnClickListener(v -> mclicklistener.onItemClick(v, getAdapterPosition()));
 
 
     }

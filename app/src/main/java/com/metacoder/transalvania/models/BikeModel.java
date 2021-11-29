@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class BikeModel implements Serializable {
     String id, address, admin_id, contact, image, name, rate , desc ;
-
+      String current_rating ;
     public BikeModel() {
     }
 
@@ -16,7 +16,7 @@ public class BikeModel implements Serializable {
         this.desc = desc;
     }
 
-    public BikeModel(String id, String address, String admin_id, String contact, String image, String name, String rate, String desc) {
+    public BikeModel(String id, String address, String admin_id, String contact, String image, String name, String rate, String desc, String current_rating) {
         this.id = id;
         this.address = address;
         this.admin_id = admin_id;
@@ -25,6 +25,15 @@ public class BikeModel implements Serializable {
         this.name = name;
         this.rate = rate;
         this.desc = desc;
+        this.current_rating = current_rating;
+    }
+
+    public String getCurrent_rating() {
+        return current_rating;
+    }
+
+    public void setCurrent_rating(String current_rating) {
+        this.current_rating = current_rating;
     }
 
     public String getId() {

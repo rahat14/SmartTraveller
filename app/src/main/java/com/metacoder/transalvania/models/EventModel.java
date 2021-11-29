@@ -8,12 +8,25 @@ public class EventModel implements Serializable {
     private String priceDetails;
     private String placeDetails;
     private String name;
+    private  String current_rating ;
     private int max_ppl;
     private int id;
     private String banner_image;
     private String location;
 
     public EventModel() {
+    }
+
+    public EventModel(int stock, String priceDetails, String placeDetails, String name, String current_rating, int max_ppl, int id, String banner_image, String location) {
+        this.stock = stock;
+        this.priceDetails = priceDetails;
+        this.placeDetails = placeDetails;
+        this.name = name;
+        this.current_rating = current_rating;
+        this.max_ppl = max_ppl;
+        this.id = id;
+        this.banner_image = banner_image;
+        this.location = location;
     }
 
     public String getLocation() {
@@ -24,15 +37,12 @@ public class EventModel implements Serializable {
         this.location = location;
     }
 
-    public EventModel(int stock, String priceDetails, String placeDetails, String name, int max_ppl, int id, String banner_image, String location) {
-        this.stock = stock;
-        this.priceDetails = priceDetails;
-        this.placeDetails = placeDetails;
-        this.name = name;
-        this.max_ppl = max_ppl;
-        this.id = id;
-        this.banner_image = banner_image;
-        this.location = location;
+    public String getCurrent_rating() {
+        return current_rating;
+    }
+
+    public void setCurrent_rating(String current_rating) {
+        this.current_rating = current_rating;
     }
 
     public int getStock() {

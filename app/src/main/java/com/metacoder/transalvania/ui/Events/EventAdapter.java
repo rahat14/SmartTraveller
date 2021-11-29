@@ -1,6 +1,7 @@
 package com.metacoder.transalvania.ui.Events;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,11 +53,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.viewholder> 
 
         holder.title.setText(item.getName());
         //    fareView.setText(fare);
-        holder.desc.setText(item.getLocation() + "\n" + item.getPlaceDetails() );
+        holder.desc.setText(item.getLocation() + "\n" + item.getPlaceDetails());
         Glide.with(context)
                 .load(item.getBanner_image())
                 .error(R.drawable.placeholder)
                 .into(holder.tripImage);
+
+        try {
+            holder.ratingBar.setRating(Float.parseFloat(item.getCurrent_rating()));
+        } catch (Exception e) {
+            Log.d("TAG", e.getMessage());
+        }
+
 
     }
 
@@ -86,7 +94,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.viewholder> 
             tripImage = mview.findViewById(R.id.image);
             ratingBar = mview.findViewById(R.id.rateTv);
 
-            ratingBar.setVisibility(View.GONE);
+//            ratingBar.setVisibility(View.GONE);
         }
 
 
