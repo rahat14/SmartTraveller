@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -33,11 +34,8 @@ import com.metacoder.transalvania.databinding.ActivityHotelDetailsBinding;
 import com.metacoder.transalvania.models.HotelModel;
 import com.metacoder.transalvania.models.ProfileModel;
 import com.metacoder.transalvania.models.RatingModel;
-import com.metacoder.transalvania.models.TransactionModel;
-import com.metacoder.transalvania.models.TripModel;
 import com.metacoder.transalvania.ui.SuccessPage;
 import com.metacoder.transalvania.utils.Utils;
-import com.metacoder.transalvania.viewholders.viewholderForMyTripList;
 import com.metacoder.transalvania.viewholders.viewholderForReviewList;
 
 import org.jetbrains.annotations.NotNull;
@@ -59,7 +57,7 @@ public class HotelDetails extends AppCompatActivity {
         binding = ActivityHotelDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         model = (HotelModel) getIntent().getSerializableExtra("MODEL");
-
+        getSupportActionBar().hide();
         binding.titleTV.setText(model.getName());
         binding.addressTv.setText(model.getAddress());
         binding.descTv.setText(model.getDesc() + "\n Price Details \n" + model.getRange());
@@ -108,7 +106,7 @@ public class HotelDetails extends AppCompatActivity {
     public void showDialog(String uid, String postID, List<RatingModel> ratingModelList) {
         totalStars = 0;
         tvRate = 0;
-        final Dialog dialog = new Dialog(getApplicationContext());
+        final Dialog dialog = new Dialog(HotelDetails.this);
         dialog.setContentView(R.layout.rating_dialoug);
 
         MaterialButton cancelBTN = dialog.findViewById(R.id.cancel_btn);
@@ -170,7 +168,8 @@ public class HotelDetails extends AppCompatActivity {
 
     }
 
-    private void loadReviewList () {
+    private void loadReviewList() {
+        //  Toast.makeText(getApplicationContext() , "Error " + model.getId() , Toast.LENGTH_LONG).show();
         DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Hotel_Services").child(model.getId()).child("rating_list");
         DatabaseReference profileRef = FirebaseDatabase.getInstance().getReference("users");
         FirebaseRecyclerOptions<RatingModel> options;
@@ -183,22 +182,24 @@ public class HotelDetails extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull viewholderForReviewList holder, final int position, @NonNull RatingModel model) {
 
 
-                profileRef.child(model.getUser_id()).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            ProfileModel profileModel = snapshot.getValue(ProfileModel.class);
-                            holder.setDataToView(getApplicationContext(), model, profileModel);
+                try {
+                    profileRef.child(model.getUser_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                ProfileModel profileModel = snapshot.getValue(ProfileModel.class);
+                                holder.setDataToView(getApplicationContext(), model, profileModel);
+                            }
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                    }
-                });
+                    });
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error : " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
 
 
             }
@@ -214,6 +215,7 @@ public class HotelDetails extends AppCompatActivity {
         };
 
         firebaseRecyclerAdapter.startListening();
+        binding.reviewList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.reviewList.setAdapter(firebaseRecyclerAdapter);
 
     }
@@ -221,6 +223,6 @@ public class HotelDetails extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        loadReviewList();
     }
 }

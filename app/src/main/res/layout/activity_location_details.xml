@@ -97,7 +97,7 @@
                                 android:fontFamily="@font/sofia_pro_medium"
                                 android:text="4.5"
                                 android:textColor="#9AA9BE"
-
+                                android:visibility="gone"
                                 android:textSize="@dimen/_14ssp" />
 
                         </LinearLayout>
@@ -134,7 +134,6 @@
                         android:background="@drawable/ic_left_arrow_in_circular_button_black_symbol"
                         android:clickable="true"
                         android:focusable="true" />
-
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -184,19 +183,37 @@
                 android:text="User Reviews"
                 android:textColor="#152046"
                 android:textSize="@dimen/_16ssp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:textStyle="bold" />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/reviewList"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:nestedScrollingEnabled="false"
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:layout_marginVertical="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/reviewBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginVertical="@dimen/_5sdp"
+                android:backgroundTint="@color/button_clr"
+                android:fontFamily="@font/sofia_pro_medium"
+                android:insetBottom="0dp"
+                android:text = "Leave A Review"
+                android:textSize="@dimen/_14ssp"
+                android:visibility="visible" />
 
         </LinearLayout>
+
+
+
+
+
+
 
 
     </LinearLayout>
