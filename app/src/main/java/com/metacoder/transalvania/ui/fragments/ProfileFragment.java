@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.metacoder.transalvania.R;
+import com.metacoder.transalvania.ui.Register;
 import com.metacoder.transalvania.ui.WelcomeScreen;
 import com.metacoder.transalvania.databinding.FragmentProfileBinding;
 import com.metacoder.transalvania.models.ProfileModel;
@@ -50,7 +53,7 @@ public class ProfileFragment extends Fragment {
     float tvRate = 0;
     float totalStars = 0;
     private FragmentProfileBinding binding;
-
+    ProfileModel model ;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -78,8 +81,16 @@ public class ProfileFragment extends Fragment {
 //                getActivity().finish();
         });
 
+
+        binding.editProfile.setOnClickListener(view1 -> {
+            Intent p = new Intent(getContext(), Register.class);
+            p.putExtra("is_edit" ,true ) ;
+            p.putExtra("MODEL" , model  )  ;
+            startActivity(p);
+        });
+
         loadProfileData();
-        loadTripData();
+      //  loadTripData();
 
 
     }
@@ -93,9 +104,19 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 
                 if (snapshot.exists()) {
-                    ProfileModel model = snapshot.getValue(ProfileModel.class);
+                     model = snapshot.getValue(ProfileModel.class);
                     binding.nameTv.setText(model.getName());
                     binding.mailTv.setText(model.getMail());
+                    try {
+                   String     downloadURL = model.getPp();
+
+                        Glide.with(getContext())
+                                .load(downloadURL)
+                                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                                .into(binding.profilePic);
+                    } catch (Exception e) {
+
+                    }
                 } else {
                     Toast.makeText(getContext(), "Error : Profile Not Found!!", Toast.LENGTH_SHORT).show();
                 }

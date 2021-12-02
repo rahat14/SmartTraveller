@@ -1,15 +1,26 @@
 package com.metacoder.transalvania.models;
 
-public class ProfileModel {
-    String name  , mail , user_id ;
+import java.io.Serializable;
+
+public class ProfileModel implements Serializable {
+    String name, mail, user_id, pp;
 
     public ProfileModel() {
     }
 
-    public ProfileModel(String name, String mail, String user_id) {
+    public ProfileModel(String name, String mail, String user_id, String pp) {
         this.name = name;
         this.mail = mail;
         this.user_id = user_id;
+        this.pp = pp;
+    }
+
+    public String getPp() {
+        return pp;
+    }
+
+    public void setPp(String pp) {
+        this.pp = pp;
     }
 
     public String getName() {

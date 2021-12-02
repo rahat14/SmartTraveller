@@ -14,10 +14,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_16sdp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:orientation="vertical">
@@ -28,22 +28,22 @@
                     android:layout_height="@dimen/_60sdp"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:gravity="center"
                     android:src="@drawable/placeholder" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_horizontal"
                 android:layout_weight=".5"
+                android:layout_marginTop="@dimen/_2sdp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nameTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center|start"
+                    android:layout_gravity="center"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:fontFamily="@font/sofia_pro_medium"
@@ -57,7 +57,7 @@
                     android:id="@+id/mailTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center|start"
+                    android:layout_gravity="center"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:fontFamily="@font/sofia_pro_medium"
@@ -68,10 +68,21 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/edit_profile"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:backgroundTint="@color/primary_text_clr"
+                    android:fontFamily="@font/sofia_pro_medium"
+                    android:text="Edit Profile"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/log_out"
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:backgroundTint="@color/primary_text_clr"
                     android:fontFamily="@font/sofia_pro_medium"
                     android:text="Log Out"
@@ -85,6 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
+            android:visibility="gone"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -217,11 +229,13 @@
             android:layout_marginHorizontal="5dp"
             android:layout_marginVertical="10dp"
             android:fontFamily="@font/sofia_pro_medium"
+            android:visibility="gone"
             android:text="Recent Trips"
             android:textSize="20sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/postList"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_5sdp" />
