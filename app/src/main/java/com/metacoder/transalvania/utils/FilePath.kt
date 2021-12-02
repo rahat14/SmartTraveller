@@ -10,6 +10,11 @@ import android.os.Environment
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 class FilePath {
+    /*
+    kotlin class
+    this class will help to find the actual image path
+    provided by google.
+     */
     fun getPath(context: Context, uri: Uri): String? {
         val isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
         if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {

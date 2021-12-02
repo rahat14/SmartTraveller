@@ -1,19 +1,12 @@
 package com.metacoder.transalvania.ui.fragments;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.common.api.ApiException;
@@ -23,14 +16,11 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.metacoder.transalvania.ui.BudgetListPage;
+import com.metacoder.transalvania.ui.budget.BudgetListPage;
 import com.metacoder.transalvania.ui.EmergencyContactList;
 import com.metacoder.transalvania.databinding.FragmentHomeBinding;
 import com.metacoder.transalvania.ui.Events.EventPage;
-import com.metacoder.transalvania.ui.LocationList;
-import com.metacoder.transalvania.ui.MainActivity;
 import com.metacoder.transalvania.ui.Pace;
 import com.metacoder.transalvania.ui.PlacesCategory;
 import com.metacoder.transalvania.ui.services.BikePage;

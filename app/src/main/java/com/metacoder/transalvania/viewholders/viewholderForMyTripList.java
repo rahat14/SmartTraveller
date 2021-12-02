@@ -15,7 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.models.RatingModel;
 import com.metacoder.transalvania.models.TransactionModel;
-import com.metacoder.transalvania.models.TripModel;
+import com.metacoder.transalvania.models.LocationModel;
 import com.metacoder.transalvania.utils.ConvertTime;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class viewholderForMyTripList extends RecyclerView.ViewHolder {
 
     }
 
-    public void setDataToView(Context context, boolean isRating, TransactionModel transactionModel, TripModel tripModel, List<RatingModel> ratingModelList) {
+    public void setDataToView(Context context, boolean isRating, TransactionModel transactionModel, LocationModel tripModel, List<RatingModel> ratingModelList) {
         TextView addRatingTv = mview.findViewById(R.id.addRatingTv);
         TextView title = mview.findViewById(R.id.nameTv);
         TextView desc = mview.findViewById(R.id.descTv);

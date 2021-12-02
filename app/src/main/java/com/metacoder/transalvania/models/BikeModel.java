@@ -4,17 +4,9 @@ import java.io.Serializable;
 
 public class BikeModel implements Serializable {
     String id, address, admin_id, contact, image, name, rate , desc ;
-      String current_rating ;
+    String current_rating ;
     public BikeModel() {
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
+    } // empty constructor // mandatory
 
     public BikeModel(String id, String address, String admin_id, String contact, String image, String name, String rate, String desc, String current_rating) {
         this.id = id;
@@ -26,6 +18,13 @@ public class BikeModel implements Serializable {
         this.rate = rate;
         this.desc = desc;
         this.current_rating = current_rating;
+    } // constructor  // optional
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getCurrent_rating() {

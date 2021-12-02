@@ -1,4 +1,4 @@
-package com.metacoder.transalvania.ui;
+package com.metacoder.transalvania.ui.budget;
 
 import android.content.Intent;
 import android.os.Bundle;

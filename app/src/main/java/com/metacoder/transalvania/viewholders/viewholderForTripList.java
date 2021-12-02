@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.metacoder.transalvania.R;
-import com.metacoder.transalvania.models.TripModel;
+import com.metacoder.transalvania.models.LocationModel;
 
 
 public class viewholderForTripList extends RecyclerView.ViewHolder {
@@ -41,7 +41,7 @@ public class viewholderForTripList extends RecyclerView.ViewHolder {
 
     }
 
-    public void setDataToView(Context context, TripModel model) {
+    public void setDataToView(Context context, LocationModel model) {
 
         TextView title = mview.findViewById(R.id.nameTv);
         TextView desc = mview.findViewById(R.id.descTv);
@@ -53,6 +53,7 @@ public class viewholderForTripList extends RecyclerView.ViewHolder {
         title.setText(model.getName());
         //    fareView.setText(fare);
         desc.setText(model.getDesc());
+
 
         try {
             ratingBar.setRating(Float.parseFloat(model.getCurrent_rating()));

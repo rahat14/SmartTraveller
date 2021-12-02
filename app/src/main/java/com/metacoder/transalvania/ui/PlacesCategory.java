@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.metacoder.transalvania.R;
+import com.metacoder.transalvania.ui.locations.LocationList;
 
 public class PlacesCategory extends AppCompatActivity {
 
@@ -20,12 +21,7 @@ public class PlacesCategory extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = new Intent(getApplicationContext(), LocationList.class);
 
-        findViewById(R.id.seas).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent);
-            }
-        });
+        findViewById(R.id.seas).setOnClickListener(view -> startActivity(intent));
 
         findViewById(R.id.plains).setOnClickListener(new View.OnClickListener() {
             @Override

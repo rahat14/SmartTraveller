@@ -15,6 +15,9 @@ import com.metacoder.transalvania.ui.Events.EventDetails;
 import java.io.File;
 
 public class Utils {
+    /*
+    these methods are common methods
+     */
     public static String getMimeType(Context context, Uri uri) {
         String extension;
 
@@ -32,6 +35,7 @@ public class Utils {
 
         return extension;
     }
+
     public static ProgressDialog createDialogue(Activity activity, String msg) {
 
         ProgressDialog dialog = new ProgressDialog(activity);

@@ -4,16 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TripModel implements Serializable {
+public class LocationModel implements Serializable {
 
     String id, name, desc, trip_duration , current_rating , queryText;
     long trip_cost;
     String mainImage;
 
-    public TripModel() {
+    public LocationModel() {
     }
 
-    public TripModel(String id, String name, String desc, String trip_duration, String current_rating, String queryText, long trip_cost, String mainImage) {
+    public LocationModel(String id, String name, String desc, String trip_duration, String current_rating, String queryText, long trip_cost, String mainImage) {
         this.id = id;
         this.name = name;
         this.desc = desc;

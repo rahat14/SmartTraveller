@@ -17,11 +17,11 @@
         android:theme="@style/Theme.TranSalVania"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.BudgetDetails"
+            android:name=".ui.budget.BudgetDetails"
             android:exported="false"
             />
         <activity
-            android:name=".ui.BudgetListPage"
+            android:name=".ui.budget.BudgetListPage"
             android:exported="false" />
 
         <activity
@@ -58,7 +58,7 @@
             android:name=".ui.timeline.TimelinePage"
             android:exported="false" />
         <activity
-            android:name=".ui.LocationList"
+            android:name=".ui.locations.LocationList"
             android:exported="false" />
         <activity
             android:name=".ui.services.HotelPage"
@@ -72,7 +72,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LocationDetails" />
+        <activity android:name=".ui.locations.LocationDetails" />
         <activity android:name=".ui.Register" />
         <activity android:name=".ui.SignIn" />
         <activity android:name=".ui.WelcomeScreen" />

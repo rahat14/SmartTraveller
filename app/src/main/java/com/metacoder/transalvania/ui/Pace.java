@@ -75,6 +75,7 @@ public class Pace extends AppCompatActivity
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         Places.initialize(getApplicationContext(), getString(R.string.google_maps_key));
 
         placesClient = Places.createClient(this);

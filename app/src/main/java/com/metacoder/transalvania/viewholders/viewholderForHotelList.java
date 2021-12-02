@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.models.HotelModel;
-import com.metacoder.transalvania.models.TripModel;
 
 
 public class viewholderForHotelList extends RecyclerView.ViewHolder {

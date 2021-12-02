@@ -1,4 +1,4 @@
-package com.metacoder.transalvania.ui;
+package com.metacoder.transalvania.ui.locations;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -35,7 +35,7 @@ import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.databinding.ActivityLocationDetailsBinding;
 import com.metacoder.transalvania.models.ProfileModel;
 import com.metacoder.transalvania.models.RatingModel;
-import com.metacoder.transalvania.models.TripModel;
+import com.metacoder.transalvania.models.LocationModel;
 import com.metacoder.transalvania.viewholders.viewholderForReviewList;
 
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +47,7 @@ import java.util.List;
 public class LocationDetails extends AppCompatActivity {
     float tvRate = 0, totalStars = 0;
     List<RatingModel> ratingModelList = new ArrayList<>();
-    TripModel model;
+    LocationModel model;
     private ActivityLocationDetailsBinding binding;
 
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
@@ -80,7 +80,7 @@ public class LocationDetails extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
-        model = (TripModel) getIntent().getSerializableExtra("TRIP_MODEL");
+        model = (LocationModel) getIntent().getSerializableExtra("TRIP_MODEL");
 
 
         binding.backBtn.setOnClickListener(v -> finish());

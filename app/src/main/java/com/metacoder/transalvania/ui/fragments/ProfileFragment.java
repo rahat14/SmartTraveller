@@ -37,7 +37,7 @@ import com.metacoder.transalvania.databinding.FragmentProfileBinding;
 import com.metacoder.transalvania.models.ProfileModel;
 import com.metacoder.transalvania.models.RatingModel;
 import com.metacoder.transalvania.models.TransactionModel;
-import com.metacoder.transalvania.models.TripModel;
+import com.metacoder.transalvania.models.LocationModel;
 import com.metacoder.transalvania.viewholders.viewholderForMyTripList;
 
 import org.jetbrains.annotations.NotNull;
@@ -149,7 +149,7 @@ public class ProfileFragment extends Fragment {
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 
                         List<RatingModel> ratingModelList = new ArrayList<>();
-                        TripModel tripModel = snapshot.getValue(TripModel.class);
+                        LocationModel tripModel = snapshot.getValue(LocationModel.class);
 
                         placeReference.child(model.getTrip_id()).child("rating_list").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override

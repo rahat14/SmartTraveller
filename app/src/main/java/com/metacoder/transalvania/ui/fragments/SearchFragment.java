@@ -17,10 +17,10 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.metacoder.transalvania.ui.LocationDetails;
+import com.metacoder.transalvania.ui.locations.LocationDetails;
 import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.databinding.FragmentSearchBinding;
-import com.metacoder.transalvania.models.TripModel;
+import com.metacoder.transalvania.models.LocationModel;
 import com.metacoder.transalvania.viewholders.viewholderForTripList;
 
 public class SearchFragment extends Fragment {
@@ -63,14 +63,14 @@ public class SearchFragment extends Fragment {
 
         DatabaseReference mref = FirebaseDatabase.getInstance().getReference("places");
         Query qq= mref.orderByChild("queryText").startAt(q).endAt(q+ "\uf8ff") ;
-        FirebaseRecyclerOptions<TripModel> options;
-        FirebaseRecyclerAdapter<TripModel, viewholderForTripList> firebaseRecyclerAdapter;
+        FirebaseRecyclerOptions<LocationModel> options;
+        FirebaseRecyclerAdapter<LocationModel, viewholderForTripList> firebaseRecyclerAdapter;
 
-        options = new FirebaseRecyclerOptions.Builder<TripModel>().setQuery(qq, TripModel.class).build();
+        options = new FirebaseRecyclerOptions.Builder<LocationModel>().setQuery(qq, LocationModel.class).build();
 
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<TripModel, viewholderForTripList>(options) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<LocationModel, viewholderForTripList>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull viewholderForTripList holder, final int position, @NonNull TripModel model) {
+            protected void onBindViewHolder(@NonNull viewholderForTripList holder, final int position, @NonNull LocationModel model) {
 
                 holder.setDataToView(getContext(), model);
 
@@ -104,14 +104,14 @@ public class SearchFragment extends Fragment {
 
     private void loadTripData() {
         DatabaseReference mref = FirebaseDatabase.getInstance().getReference("places");
-        FirebaseRecyclerOptions<TripModel> options;
-        FirebaseRecyclerAdapter<TripModel, viewholderForTripList> firebaseRecyclerAdapter;
+        FirebaseRecyclerOptions<LocationModel> options;
+        FirebaseRecyclerAdapter<LocationModel, viewholderForTripList> firebaseRecyclerAdapter;
 
-        options = new FirebaseRecyclerOptions.Builder<TripModel>().setQuery(mref, TripModel.class).build();
+        options = new FirebaseRecyclerOptions.Builder<LocationModel>().setQuery(mref, LocationModel.class).build();
 
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<TripModel, viewholderForTripList>(options) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<LocationModel, viewholderForTripList>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull viewholderForTripList holder, final int position, @NonNull TripModel model) {
+            protected void onBindViewHolder(@NonNull viewholderForTripList holder, final int position, @NonNull LocationModel model) {
 
                 holder.setDataToView(getContext(), model);
 

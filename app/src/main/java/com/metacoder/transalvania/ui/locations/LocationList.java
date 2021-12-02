@@ -1,4 +1,4 @@
-package com.metacoder.transalvania.ui;
+package com.metacoder.transalvania.ui.locations;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.databinding.ActivityLocationListBinding;
 import com.metacoder.transalvania.models.ProfileModel;
-import com.metacoder.transalvania.models.TripModel;
+import com.metacoder.transalvania.models.LocationModel;
 import com.metacoder.transalvania.viewholders.viewholderForTripList;
 
 import org.jetbrains.annotations.NotNull;
@@ -54,15 +54,15 @@ public class LocationList extends AppCompatActivity {
     }
 
     private void loadTripData() {
-        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("places");
-        FirebaseRecyclerOptions<TripModel> options;
-        FirebaseRecyclerAdapter<TripModel, viewholderForTripList> firebaseRecyclerAdapter;
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("places"); // poitining the database
+        FirebaseRecyclerOptions<LocationModel> options;
+        FirebaseRecyclerAdapter<LocationModel, viewholderForTripList> firebaseRecyclerAdapter;
 
-        options = new FirebaseRecyclerOptions.Builder<TripModel>().setQuery(mref, TripModel.class).build();
+        options = new FirebaseRecyclerOptions.Builder<LocationModel>().setQuery(mref, LocationModel.class).build(); // started query
 
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<TripModel, viewholderForTripList>(options) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<LocationModel, viewholderForTripList>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull viewholderForTripList holder, final int position, @NonNull TripModel model) {
+            protected void onBindViewHolder(@NonNull viewholderForTripList holder, final int position, @NonNull LocationModel model) {
 
                 holder.setDataToView(getApplicationContext(), model);
 
@@ -89,7 +89,7 @@ public class LocationList extends AppCompatActivity {
             }
         };
 
-        firebaseRecyclerAdapter.startListening();
+        firebaseRecyclerAdapter.startListening(); // started the call
         binding.tripList.setAdapter(firebaseRecyclerAdapter);
 
     }
