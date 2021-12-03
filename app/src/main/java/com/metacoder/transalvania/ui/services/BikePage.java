@@ -31,7 +31,7 @@ public class BikePage extends AppCompatActivity {
         binding = ActivityBikePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setTitle("Rental");
         binding.hotelLIst.setLayoutManager(new LinearLayoutManager(this));
         loadTripData();
 

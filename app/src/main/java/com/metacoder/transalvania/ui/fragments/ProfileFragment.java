@@ -31,7 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.metacoder.transalvania.R;
-import com.metacoder.transalvania.ui.Register;
+import com.metacoder.transalvania.ui.auth.Register;
 import com.metacoder.transalvania.ui.WelcomeScreen;
 import com.metacoder.transalvania.databinding.FragmentProfileBinding;
 import com.metacoder.transalvania.models.ProfileModel;

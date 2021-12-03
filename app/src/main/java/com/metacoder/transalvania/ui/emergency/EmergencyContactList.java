@@ -1,4 +1,4 @@
-package com.metacoder.transalvania.ui;
+package com.metacoder.transalvania.ui.emergency;
 
 import android.content.Intent;
 import android.net.Uri;

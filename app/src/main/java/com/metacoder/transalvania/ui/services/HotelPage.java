@@ -29,7 +29,7 @@ public class HotelPage extends AppCompatActivity {
         binding = ActivityHotelPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setTitle("Hotels");
         binding.hotelLIst.setLayoutManager(new LinearLayoutManager(this));
 
         loadTripData();

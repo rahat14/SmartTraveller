@@ -31,7 +31,7 @@ public class BudgetListPage extends AppCompatActivity {
         binding = ActivityBudgetListPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setTitle("Tour Budget");
         binding.list.setLayoutManager(new LinearLayoutManager(this));
 
         loadTripData();

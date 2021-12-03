@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.databinding.ActivityWelcomeScreenBinding;
+import com.metacoder.transalvania.ui.auth.Register;
+import com.metacoder.transalvania.ui.auth.SignIn;
 import com.metacoder.transalvania.utils.SliderAdapterExample;
 import com.metacoder.transalvania.utils.sliderItem;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;

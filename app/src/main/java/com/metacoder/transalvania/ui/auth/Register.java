@@ -1,4 +1,4 @@
-package com.metacoder.transalvania.ui;
+package com.metacoder.transalvania.ui.auth;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -32,6 +32,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.metacoder.transalvania.databinding.ActivityRegisterBinding;
 import com.metacoder.transalvania.models.ProfileModel;
+import com.metacoder.transalvania.ui.MainActivity;
 import com.metacoder.transalvania.utils.Utils;
 
 import org.jetbrains.annotations.NotNull;

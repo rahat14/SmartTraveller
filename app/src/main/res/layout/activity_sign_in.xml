@@ -109,7 +109,7 @@
             android:gravity="center"
             android:layout_marginTop="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
-            android:layout_marginBottom="@dimen/_16sdp"
+
             android:layout_marginStart="@dimen/_16sdp"
             android:orientation="horizontal">
             <TextView
@@ -132,5 +132,15 @@
                 />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/forgetPass"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:text="Forget Password?"
+            android:textColor="@color/button_clr"
+            android:fontFamily="@font/sofia_pro_light"
+            android:textSize="@dimen/_14ssp"/>
     </LinearLayout>
 </LinearLayout>

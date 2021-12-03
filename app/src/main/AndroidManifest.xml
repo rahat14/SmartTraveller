@@ -17,24 +17,28 @@
         android:theme="@style/Theme.TranSalVania"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.Events.CreateEventPage"
+            android:exported="false" />
+        <activity
+            android:name=".ui.resetPassword.ResetPassword"
+            android:exported="false" />
+        <activity
             android:name=".ui.budget.BudgetDetails"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".ui.budget.BudgetListPage"
             android:exported="false" />
-
         <activity
-            android:name=".ui.PlacesCategory"
+            android:name=".ui.locations.PlacesCategory"
             android:exported="false" />
         <activity
             android:name=".ui.SuccessPage"
             android:exported="false" />
         <activity
-            android:name=".ui.EmergencyContactList"
+            android:name=".ui.emergency.EmergencyContactList"
             android:exported="false" />
         <activity
-            android:name=".ui.Pace"
+            android:name=".ui.nearme.Pace"
             android:exported="true" />
         <activity
             android:name=".ui.Events.EventDetails"
@@ -73,8 +77,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.locations.LocationDetails" />
-        <activity android:name=".ui.Register" />
-        <activity android:name=".ui.SignIn" />
+        <activity android:name=".ui.auth.Register" />
+        <activity android:name=".ui.auth.SignIn" />
         <activity android:name=".ui.WelcomeScreen" />
         <activity
             android:name=".ui.MainActivity"

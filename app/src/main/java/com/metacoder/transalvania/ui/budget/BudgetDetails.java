@@ -20,9 +20,13 @@ public class BudgetDetails extends AppCompatActivity implements BudgetListAdapte
         super.onCreate(savedInstanceState);
 
         binding = ActivityBudgetDetailsBinding.inflate(getLayoutInflater());
-
         setContentView(binding.getRoot());
+
+
         BudgetModel model = (BudgetModel) getIntent().getSerializableExtra("MODEL");
+
+        binding.from.setText(model.getFrom());
+        binding.ro.setText(model.getTol());
 
         binding.list.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 

@@ -21,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.databinding.ActivityLocationListBinding;
@@ -32,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class LocationList extends AppCompatActivity {
     private ActivityLocationListBinding binding;
-
+    String cat = "mountain" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class LocationList extends AppCompatActivity {
         binding.tripList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         setContentView(binding.getRoot());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        cat = getIntent().getStringExtra("cat");
         loadTripData();
     }
 
@@ -58,7 +59,8 @@ public class LocationList extends AppCompatActivity {
         FirebaseRecyclerOptions<LocationModel> options;
         FirebaseRecyclerAdapter<LocationModel, viewholderForTripList> firebaseRecyclerAdapter;
 
-        options = new FirebaseRecyclerOptions.Builder<LocationModel>().setQuery(mref, LocationModel.class).build(); // started query
+        Query query = mref.orderByChild("category").equalTo(cat) ;
+        options = new FirebaseRecyclerOptions.Builder<LocationModel>().setQuery(query, LocationModel.class).build(); // started query
 
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<LocationModel, viewholderForTripList>(options) {
             @Override

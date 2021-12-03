@@ -61,6 +61,7 @@ public class TimelinePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline_page);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Timeline");
 
         context = getApplicationContext();
         manager = new LinearLayoutManager(context);
@@ -71,6 +72,7 @@ public class TimelinePage extends AppCompatActivity {
         postList.setHasFixedSize(true);
 
         uid = FirebaseAuth.getInstance().getUid();
+
 
         postRef = FirebaseDatabase.getInstance().getReference("post");
 
@@ -128,9 +130,9 @@ public class TimelinePage extends AppCompatActivity {
 
 
                 if (ConvertTime.From(postModel.postTime).contains("123456")) {
-                    postRef.child(getItem(postViewholder.getAbsoluteAdapterPosition()).postId).removeValue();
-                    postViewholder.itemView.setVisibility(View.GONE);
-                    postViewholder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+//                    postRef.child(getItem(postViewholder.getAbsoluteAdapterPosition()).postId).removeValue();
+//                    postViewholder.itemView.setVisibility(View.GONE);
+//                    postViewholder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
 
                 } else {
 

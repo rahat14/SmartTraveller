@@ -1,4 +1,4 @@
-package com.metacoder.transalvania.ui;
+package com.metacoder.transalvania.utils;
 
 
 import android.Manifest;

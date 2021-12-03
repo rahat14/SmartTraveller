@@ -16,6 +16,7 @@
     android:id="@+id/addBtn"
     android:layout_width="match_parent"
     android:layout_gravity="bottom|end"
+    android:src="@drawable/ic_baseline_add_24"
     android:layout_marginVertical="@dimen/_50sdp"
     android:layout_marginHorizontal="@dimen/_30sdp"
     android:layout_height="wrap_content"

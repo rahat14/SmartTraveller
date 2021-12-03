@@ -2,7 +2,6 @@ package com.metacoder.transalvania.ui;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,21 +14,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.ResolvableApiException;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.databinding.ActivityMainBinding;
 import com.metacoder.transalvania.ui.fragments.fragment_adapter;
+import com.metacoder.transalvania.ui.locations.PlacesCategory;
+import com.metacoder.transalvania.ui.nearme.Pace;
 import com.metacoder.transalvania.ui.services.HotelPage;
 
 public class MainActivity extends AppCompatActivity {

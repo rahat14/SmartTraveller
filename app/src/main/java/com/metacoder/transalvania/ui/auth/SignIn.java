@@ -1,4 +1,4 @@
-package com.metacoder.transalvania.ui;
+package com.metacoder.transalvania.ui.auth;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.metacoder.transalvania.databinding.ActivitySignInBinding;
+import com.metacoder.transalvania.ui.MainActivity;
+import com.metacoder.transalvania.ui.resetPassword.ResetPassword;
 import com.metacoder.transalvania.utils.Utils;
 
 public class SignIn extends AppCompatActivity {
@@ -26,6 +28,15 @@ public class SignIn extends AppCompatActivity {
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().hide();
+
+        binding.forgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent p = new Intent(getApplicationContext(), ResetPassword.class);
+                startActivity(p);
+
+            }
+        });
 
         binding.signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override

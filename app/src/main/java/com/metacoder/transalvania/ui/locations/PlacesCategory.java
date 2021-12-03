@@ -1,4 +1,4 @@
-package com.metacoder.transalvania.ui;
+package com.metacoder.transalvania.ui.locations;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.metacoder.transalvania.R;
-import com.metacoder.transalvania.ui.locations.LocationList;
 
 public class PlacesCategory extends AppCompatActivity {
 
@@ -21,11 +20,16 @@ public class PlacesCategory extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = new Intent(getApplicationContext(), LocationList.class);
 
-        findViewById(R.id.seas).setOnClickListener(view -> startActivity(intent));
+        findViewById(R.id.seas).setOnClickListener(view -> {
+            intent.putExtra("cat", "sea");
+            startActivity(intent);
+        });
+
 
         findViewById(R.id.plains).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("cat", "plain");
                 startActivity(intent);
             }
         });
@@ -33,6 +37,7 @@ public class PlacesCategory extends AppCompatActivity {
         findViewById(R.id.historical).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("cat", "historical");
                 startActivity(intent);
             }
         });
@@ -40,6 +45,7 @@ public class PlacesCategory extends AppCompatActivity {
         findViewById(R.id.mountains).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("cat", "mountain");
                 startActivity(intent);
             }
         });

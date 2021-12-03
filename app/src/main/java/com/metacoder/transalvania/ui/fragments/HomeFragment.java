@@ -17,12 +17,14 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.Task;
-import com.metacoder.transalvania.ui.budget.BudgetListPage;
-import com.metacoder.transalvania.ui.EmergencyContactList;
+import com.google.firebase.auth.FirebaseAuth;
 import com.metacoder.transalvania.databinding.FragmentHomeBinding;
+import com.metacoder.transalvania.ui.emergency.EmergencyContactList;
 import com.metacoder.transalvania.ui.Events.EventPage;
-import com.metacoder.transalvania.ui.Pace;
-import com.metacoder.transalvania.ui.PlacesCategory;
+import com.metacoder.transalvania.ui.nearme.Pace;
+import com.metacoder.transalvania.ui.locations.PlacesCategory;
+import com.metacoder.transalvania.ui.auth.SignIn;
+import com.metacoder.transalvania.ui.budget.BudgetListPage;
 import com.metacoder.transalvania.ui.services.BikePage;
 import com.metacoder.transalvania.ui.services.HotelPage;
 import com.metacoder.transalvania.ui.timeline.TimelinePage;
@@ -30,12 +32,13 @@ import com.metacoder.transalvania.ui.timeline.TimelinePage;
 
 public class HomeFragment extends Fragment {
 
+    LocationSettingsRequest.Builder builder;
     private FragmentHomeBinding binding;
 
     public HomeFragment() {
         // Required empty public constructor
     }
-    LocationSettingsRequest.Builder builder ;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,9 +82,20 @@ public class HomeFragment extends Fragment {
         );
 
         binding.nearBy.setOnClickListener(v -> {
-                   askForGps();
+                    askForGps();
                 }
         );
+        binding.logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                auth.signOut();
+                Intent p = new Intent(getContext(), SignIn.class);
+                p.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(p);
+                getActivity().finish();
+            }
+        });
 
 
         binding.eventList.setOnClickListener(v -> {
@@ -90,18 +104,16 @@ public class HomeFragment extends Fragment {
         );
 
 
-
         return binding.getRoot();
 
 
     }
 
-    private void askForGps(){
+    private void askForGps() {
 
 
         Task<LocationSettingsResponse> result =
                 LocationServices.getSettingsClient(getActivity()).checkLocationSettings(builder.build());
-
 
 
         result.addOnCompleteListener(task -> {
@@ -123,7 +135,7 @@ public class HomeFragment extends Fragment {
                             // and check the result in onActivityResult().
 
                             resolvable.startResolutionForResult(
-                                   getActivity(),
+                                    getActivity(),
                                     100);
 
 

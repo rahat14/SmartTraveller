@@ -3,6 +3,7 @@ package com.metacoder.transalvania.ui.Events;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,11 +33,12 @@ public class EventPage extends AppCompatActivity implements EventAdapter.ItemCli
         binding = ActivityEventPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setTitle("Events");
         binding.eventList.setLayoutManager(new LinearLayoutManager(this));
 
         mref = FirebaseDatabase.getInstance().getReference("Events");
 
+        binding.addBtn.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), CreateEventPage.class)));
 
         loadedEvents();
 

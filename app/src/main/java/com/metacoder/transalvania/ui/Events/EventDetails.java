@@ -2,7 +2,6 @@ package com.metacoder.transalvania.ui.Events;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,17 +43,18 @@ import java.util.HashMap;
 import java.util.List;
 
 public class EventDetails extends AppCompatActivity {
-    private ActivityEventDetailsBinding binding;
     float tvRate = 0, totalStars = 0;
     List<RatingModel> ratingModelList = new ArrayList<>();
-    EventModel model ;
+    EventModel model;
+    private ActivityEventDetailsBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);//670680
         binding = ActivityEventDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().hide();
-         model = (EventModel) getIntent().getSerializableExtra("MODEL");
+        model = (EventModel) getIntent().getSerializableExtra("MODEL");
 
         binding.titleTV.setText(model.getName());
         binding.addressTv.setText(model.getLocation());
@@ -66,7 +66,7 @@ public class EventDetails extends AppCompatActivity {
 
         binding.reviewBtn.setOnClickListener(view -> {
             String uids = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            showDialog(uids, model.getId()+"", ratingModelList);
+            showDialog(uids, model.getId() + "", ratingModelList);
         });
 
         Glide.with(getApplicationContext())
@@ -82,7 +82,7 @@ public class EventDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                if(firebaseUser != null){
+                if (firebaseUser != null) {
                     ProgressDialog dialog = new ProgressDialog(EventDetails.this);
                     dialog.setMessage("Processing...");
                     dialog.setCancelable(false);
@@ -91,10 +91,10 @@ public class EventDetails extends AppCompatActivity {
                         @Override
                         public void run() {
                             dialog.dismiss();
-                            startActivity(new Intent(getApplicationContext() , SuccessPage.class));
+                            startActivity(new Intent(getApplicationContext(), SuccessPage.class));
                         }
-                    }, 1200) ;
-                }else {
+                    }, 1200);
+                } else {
                     Utils.showLOginError(EventDetails.this);
                 }
             }
@@ -135,7 +135,7 @@ public class EventDetails extends AppCompatActivity {
                 dialog.dismiss();
 
                 float totalRating = (totalStars + (float) tvRate) / (float) (ratingModelList.size() + 1);
-               // Log.d("TAG", "onClick: " + totalRating + "total stars " + totalStars);
+                // Log.d("TAG", "onClick: " + totalRating + "total stars " + totalStars);
                 DatabaseReference mrf = FirebaseDatabase.getInstance().getReference("Events")
                         .child(postID);
 
@@ -169,7 +169,7 @@ public class EventDetails extends AppCompatActivity {
 
     private void loadReviewList() {
         //  Toast.makeText(getApplicationContext() , "Error " + model.getId() , Toast.LENGTH_LONG).show();
-        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Events").child(model.getId()+"").child("rating_list");
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Events").child(model.getId() + "").child("rating_list");
         DatabaseReference profileRef = FirebaseDatabase.getInstance().getReference("users");
         FirebaseRecyclerOptions<RatingModel> options;
         FirebaseRecyclerAdapter<RatingModel, viewholderForReviewList> firebaseRecyclerAdapter;

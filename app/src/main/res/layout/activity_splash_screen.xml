@@ -4,33 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/yellow"
+    tools:context=".SplashScreen">
 
-    tools:context=".ui.SplashScreen">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/primary_text_clr"
-        android:textSize="@dimen/_34ssp"
-        android:fontFamily="@font/sofia_pro_medium"
+    <ImageView
+        android:id="@+id/smrt_trvlr_iv"
+        android:layout_width="229dp"
+        android:layout_height="221dp"
+        android:layout_marginTop="@dimen/_50sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.256"
+        app:srcCompat="@drawable/traveller" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+    <TextView
+        android:id="@+id/smrt_trvlr_tv"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:fontFamily="@font/sofia_pro_medium"
+        android:gravity="center"
+        android:text="Smart Traveler"
+        android:textAllCaps="true"
+        android:textColor="#FDFCFC"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smrt_trvlr_iv"
+        app:layout_constraintVertical_bias="0.217" />
+
+    <TextView
+        android:id="@+id/sub_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:indeterminateTint="@color/primary_text_clr"
-        android:indeterminate="true"
+        android:fontFamily="@font/sofia_pro_medium"
+        android:text="Your Travel Guide"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smrt_trvlr_tv"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

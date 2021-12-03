@@ -1,4 +1,4 @@
-package com.metacoder.transalvania.ui;
+package com.metacoder.transalvania.ui.nearme;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -31,6 +31,7 @@ import com.metacoder.transalvania.R;
 import com.metacoder.transalvania.databinding.ActivityPaceBinding;
 import com.metacoder.transalvania.models.PlaceResponse;
 import com.metacoder.transalvania.models.PlaceResult;
+import com.metacoder.transalvania.utils.PermissionUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
