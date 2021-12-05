@@ -30,21 +30,19 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.metacoder.smart_traveler.R;
 import com.metacoder.smart_traveler.databinding.FragmentProfileBinding;
 import com.metacoder.smart_traveler.models.LocationModel;
 import com.metacoder.smart_traveler.models.ProfileModel;
 import com.metacoder.smart_traveler.models.RatingModel;
-import com.metacoder.smart_traveler.models.TransactionModel;
 import com.metacoder.smart_traveler.ui.WelcomeScreen;
 import com.metacoder.smart_traveler.ui.auth.Register;
-import com.metacoder.smart_traveler.viewholders.viewholderForMyTripList;
+import com.metacoder.smart_traveler.ui.locations.LocationDetails;
+import com.metacoder.smart_traveler.viewholders.viewholderForTripList;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -95,7 +93,7 @@ public class ProfileFragment extends Fragment {
         loadProfileData();
         //  loadTripData();
 
-
+        loadBookMarkData();
     }
 
     private void loadProfileData() {
@@ -143,102 +141,45 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    private void loadTripData() {
+    private void loadBookMarkData() {
 
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("bookmark").child(uid); // poitining the database
+        FirebaseRecyclerOptions<LocationModel> options;
+        FirebaseRecyclerAdapter<LocationModel, viewholderForTripList> firebaseRecyclerAdapter;
 
-        DatabaseReference placeReference = FirebaseDatabase.getInstance().getReference("places");
-        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("purchase_list");
-        Query searchQuery = mref.orderByChild("user_id").equalTo(uid);
-        FirebaseRecyclerOptions<TransactionModel> options;
-        FirebaseRecyclerAdapter<TransactionModel, viewholderForMyTripList> firebaseRecyclerAdapter;
-        options = new FirebaseRecyclerOptions.Builder<TransactionModel>().setQuery(searchQuery, TransactionModel.class).build();
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<TransactionModel, viewholderForMyTripList>(options) {
+        options = new FirebaseRecyclerOptions.Builder<LocationModel>().setQuery(mref, LocationModel.class).build(); // started query
+
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<LocationModel, viewholderForTripList>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull viewholderForMyTripList holder, final int position, @NonNull TransactionModel model) {
+            protected void onBindViewHolder(@NonNull viewholderForTripList holder, final int position, @NonNull LocationModel model) {
 
+                holder.setDataToView(getContext(), model);
 
-                placeReference.child(model.getTrip_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-
-                        List<RatingModel> ratingModelList = new ArrayList<>();
-                        LocationModel tripModel = snapshot.getValue(LocationModel.class);
-
-                        placeReference.child(model.getTrip_id()).child("rating_list").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                boolean isRated = false;
-
-                                if (snapshot.exists()) {
-
-                                    for (DataSnapshot ds : snapshot.getChildren()) {
-                                        RatingModel singleRatingModel = ds.getValue(RatingModel.class);
-                                        if (singleRatingModel.getUser_id().equals(uid)) {
-                                            isRated = true;
-
-
-                                        }
-                                        ratingModelList.add(singleRatingModel);
-                                    }
-
-                                }
-                                //     holder.setDataToView(getContext(), isRated, model, tripModel, ratingModelList);
-
-                                double totalSpend = Double.parseDouble(binding.totalSpend.getText().toString());
-                                totalSpend = totalSpend + tripModel.getTrip_cost();
-
-                                binding.totalSpend.setText(totalSpend + "");
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                            }
-                        });
-
-                        holder.textView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                showDialog(uid, tripModel.getId(), ratingModelList);
-                            }
-                        });
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
+                    public void onClick(View v) {
+                        // change intent
+                        Intent p = new Intent(getContext(), LocationDetails.class);
+                        p.putExtra("TRIP_MODEL", model);
+                        p.putExtra("IS_BOOKMARK" , true)  ;
+                        startActivity(p);
                     }
                 });
 
-                int totalTrp = Integer.parseInt(binding.totalTrips.getText().toString());
-                totalTrp = totalTrp + 1;
-
-                binding.totalTrips.setText("" + totalTrp);
-
-
-            }
-
-            @Override
-            public int getItemCount() {
-                return super.getItemCount();
             }
 
             @NonNull
             @Override
-            public viewholderForMyTripList onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public viewholderForTripList onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View iteamVIew = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_place, parent, false);
-                final viewholderForMyTripList viewholders = new viewholderForMyTripList(iteamVIew);
+                final viewholderForTripList viewholders = new viewholderForTripList(iteamVIew);
 
                 return viewholders;
             }
         };
 
-        firebaseRecyclerAdapter.startListening();
+        firebaseRecyclerAdapter.startListening(); // started the call
         binding.postList.setAdapter(firebaseRecyclerAdapter);
-
 
     }
 
@@ -307,7 +248,7 @@ public class ProfileFragment extends Fragment {
 
                                     dialog.dismiss();
                                     Toast.makeText(getContext(), "Success  :  Your Feedback Received...", Toast.LENGTH_LONG).show();
-                                    loadTripData();
+
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override

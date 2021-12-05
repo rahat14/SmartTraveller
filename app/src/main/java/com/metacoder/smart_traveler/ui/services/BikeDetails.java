@@ -20,6 +20,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,10 +49,11 @@ import java.util.List;
 
 public class BikeDetails extends AppCompatActivity {
     private ActivityBikeDetailsBinding binding; // server sided  // send -> q -> select node ->  sever search -> return  == best practice // less client work
-                                                // whole data download locally -> loop -> q -> selec node -> data pava -> bad prcactice
+    // whole data download locally -> loop -> q -> selec node -> data pava -> bad prcactice
     BikeModel model;
     float tvRate = 0, totalStars = 0;
     List<RatingModel> ratingModelList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,10 +85,9 @@ public class BikeDetails extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            dialog.dismiss();
-                            startActivity(new Intent(getApplicationContext(), SuccessPage.class));
+                            uploadRental(model, firebaseUser.getUid(), dialog);
                         }
-                    }, 1200);
+                    }, 600);
                 } else {
                     Utils.showLOginError(BikeDetails.this);
                 }
@@ -119,7 +122,6 @@ public class BikeDetails extends AppCompatActivity {
         for (RatingModel ratingModel : ratingModelList) {
             totalStars = totalStars + (float) ratingModel.getRating();
         }
-
 
 
         cancelBTN.setOnClickListener(v -> dialog.dismiss());
@@ -218,6 +220,32 @@ public class BikeDetails extends AppCompatActivity {
         firebaseRecyclerAdapter.startListening();
         binding.reviewList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.reviewList.setAdapter(firebaseRecyclerAdapter);
+
+    }
+
+    public void uploadRental(BikeModel model, String uid, ProgressDialog dialog) {
+
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("PurchasedRentalServices");
+        String key = mref.push().getKey();
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("uid", uid);
+        map.put("date", System.currentTimeMillis());
+        map.put("rental_model", model);
+        map.put("rental_id", model.getId());
+        map.put("transaction_id", System.currentTimeMillis() / 1000);
+
+        mref.child(key).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                dialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), SuccessPage.class));
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
     }
 

@@ -48,6 +48,8 @@ public class LocationDetails extends AppCompatActivity {
     float tvRate = 0, totalStars = 0;
     List<RatingModel> ratingModelList = new ArrayList<>();
     LocationModel model;
+    Boolean isBookMarkData = false, isBookMark = false;
+
     private ActivityLocationDetailsBinding binding;
 
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
@@ -67,7 +69,7 @@ public class LocationDetails extends AppCompatActivity {
         binding = ActivityLocationDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().hide();
-
+        isBookMarkData = getIntent().getBooleanExtra("IS_BOOKMARK" , false) ;
         binding.reviewList.setLayoutManager(new LinearLayoutManager(this));
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
@@ -123,44 +125,12 @@ public class LocationDetails extends AppCompatActivity {
             showDialog(uids, model.getId(), ratingModelList);
         });
 
-//        binding.bookNow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//
-//                HashMap<String, Object> map = new HashMap<String, Object>();
-//
-//                map.put("user_id", uid);
-//                map.put("purchase_time", System.currentTimeMillis());
-//                map.put("paid", model.getTrip_cost());
-//                map.put("trip_id", model.getId());
-//
-//                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("purchase_list");
-//
-//                String key = databaseReference.push().getKey();
-//                map.put("trans_id", key);
-//
-//                databaseReference.child(key).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//
-//                        Toast.makeText(getApplicationContext(), "Congratulations , You Have Purchased This Trip", Toast.LENGTH_LONG).show();
-//                        finish();
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull @NotNull Exception e) {
-//                        Toast.makeText(getApplicationContext(), "Error :  " + e.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//
-//            }
-//        });
+        binding.reviewContainer.setVisibility(View.GONE);
+        if (!isBookMarkData) {
+            binding.reviewContainer.setVisibility(View.VISIBLE);
+            loadTripData();
+        }
 
-
-        loadTripData();
     }
 
     private void checkForBookMark(LocationModel model) {
@@ -176,8 +146,11 @@ public class LocationDetails extends AppCompatActivity {
                     if (snapshot.exists()) {
                         binding.durationTv.setTextColor(Color.GREEN);
                         binding.durationTv.setText("Bookmarked");
+                        isBookMark = true;
                     } else {
                         binding.durationTv.setText("Add Bookmark");
+                        binding.durationTv.setTextColor(Color.parseColor("#9AA9BE"));
+                        isBookMark = false;
                     }
                 }
 
@@ -194,9 +167,14 @@ public class LocationDetails extends AppCompatActivity {
         DatabaseReference mref = FirebaseDatabase.getInstance().getReference("bookmark").child(firebaseUser.getUid())
                 .child(model.getId());
 
-        mref.setValue(model);
-
-        Toast.makeText(getApplicationContext(), "Bookmarked !!!", Toast.LENGTH_LONG).show();
+        if (isBookMark) {
+            mref.removeValue();
+            Toast.makeText(getApplicationContext(), "Bookmarked  Removed!!!", Toast.LENGTH_LONG).show();
+        } else {
+            mref.setValue(model);
+            Toast.makeText(getApplicationContext(), "Bookmarked !!!", Toast.LENGTH_LONG).show();
+        }
+        checkForBookMark(model);
 
     }
 

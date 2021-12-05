@@ -20,6 +20,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -92,10 +95,11 @@ public class HotelDetails extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        dialog.dismiss();
-                        startActivity(new Intent(getApplicationContext(), SuccessPage.class));
+                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        uploadEvent(model, uid, dialog);
+                     //   startActivity(new Intent(getApplicationContext(), SuccessPage.class));
                     }
-                }, 1200);
+                }, 600);
             } else {
                 Utils.showLOginError(HotelDetails.this);
             }
@@ -152,8 +156,6 @@ public class HotelDetails extends AppCompatActivity {
 
                             mrf.child("current_rating").setValue(totalRating + "");
                             dialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "Success  :  Your Feedback Received...", Toast.LENGTH_LONG).show();
-
                         }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), "Error : " + e.getMessage(), Toast.LENGTH_LONG).show());
 
 
@@ -216,6 +218,32 @@ public class HotelDetails extends AppCompatActivity {
         firebaseRecyclerAdapter.startListening();
         binding.reviewList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.reviewList.setAdapter(firebaseRecyclerAdapter);
+
+    }
+
+    public void uploadEvent(HotelModel model, String uid, ProgressDialog dialog) {
+
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("PurchasedHotelServices");
+        String key = mref.push().getKey();
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("uid", uid);
+        map.put("date", System.currentTimeMillis());
+        map.put("hotel_model", model);
+        map.put("hotel_id", model.getId());
+        map.put("transaction_id", System.currentTimeMillis() / 1000);
+
+        mref.child(key).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                dialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), SuccessPage.class));
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
     }
 

@@ -19,6 +19,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -83,6 +86,7 @@ public class EventDetails extends AppCompatActivity {
             public void onClick(View view) {
                 FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 if (firebaseUser != null) {
+
                     ProgressDialog dialog = new ProgressDialog(EventDetails.this);
                     dialog.setMessage("Processing...");
                     dialog.setCancelable(false);
@@ -90,10 +94,12 @@ public class EventDetails extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            dialog.dismiss();
-                            startActivity(new Intent(getApplicationContext(), SuccessPage.class));
+                            uploadEvent(model, firebaseUser.getUid(), dialog);
+
                         }
-                    }, 1200);
+                    }, 600);
+
+
                 } else {
                     Utils.showLOginError(EventDetails.this);
                 }
@@ -223,5 +229,31 @@ public class EventDetails extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         loadReviewList();
+    }
+
+    public void uploadEvent(EventModel model, String uid, ProgressDialog dialog) {
+
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("PurchasedEvents");
+        String key = mref.push().getKey();
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("uid", uid);
+        map.put("date", System.currentTimeMillis());
+        map.put("event_model", model);
+        map.put("event_id", model.getId());
+        map.put("transaction_id", System.currentTimeMillis() / 1000);
+
+        mref.child(key).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                dialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), SuccessPage.class));
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
     }
 }

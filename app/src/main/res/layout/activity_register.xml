@@ -127,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
                     android:hint="Your Phone"
-                    android:inputType="textEmailAddress"
+                    android:inputType="phone"
                     android:paddingStart="@dimen/_24sdp"
                     android:paddingTop="@dimen/_2sdp"
                     android:paddingEnd="@dimen/_8sdp"
