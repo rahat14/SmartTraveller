@@ -95,20 +95,18 @@ public class Register extends AppCompatActivity {
         }
 
 
-        binding.signinBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        binding.signinBtn.setOnClickListener(v -> {
 
-                Intent p = new Intent(getApplicationContext(), SignIn.class);
-                startActivity(p);
+            Intent p = new Intent(getApplicationContext(), SignIn.class);
+            startActivity(p);
 
-            }
         });
 
 
         binding.pp.setOnClickListener(view -> ImagePicker.with(Register.this)
                 .crop()
-                .start());
+                .start()
+        );
 
         binding.signUp.setOnClickListener(v -> {
             String password = binding.PersonPass.getText().toString();
