@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "431172508455",
-    "firebase_url": "https://transalvania-ee5b3-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "transalvania-ee5b3",
-    "storage_bucket": "transalvania-ee5b3.appspot.com"
+    "project_number": "853338194045",
+    "firebase_url": "https://smart-traveler-58e23-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smart-traveler-58e23",
+    "storage_bucket": "smart-traveler-58e23.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:431172508455:android:15da4d8afbef71877d6702",
+        "mobilesdk_app_id": "1:853338194045:android:4ecad9460e6e2934b77114",
         "android_client_info": {
-          "package_name": "com.metacoder.transalvania"
+          "package_name": "com.metacoder.smart_traveler"
         }
       },
       "oauth_client": [
         {
-          "client_id": "431172508455-5buc9r4oc7pfp9n9edqnm8005tmcc202.apps.googleusercontent.com",
+          "client_id": "853338194045-1su1t6rt5v5r2o8q5d1jsi6jir0ota7n.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.metacoder.transalvania",
+            "package_name": "com.metacoder.smart_traveler",
             "certificate_hash": "e7134e9e771c4552820851631487affe4d0ba29b"
           }
         },
         {
-          "client_id": "431172508455-fgbqsoauqe49p2tct8bj01h4oob3585n.apps.googleusercontent.com",
+          "client_id": "853338194045-d9sq1dsvda2i8gkllgts2rsnl6ab1eir.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBS3SbqrLzvFV2wBO37r3olNrhYbT3Phng"
+          "current_key": "AIzaSyBaTqciTaoasteTyUsEiU81daCSN_5ZdlE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "431172508455-fgbqsoauqe49p2tct8bj01h4oob3585n.apps.googleusercontent.com",
+              "client_id": "853338194045-d9sq1dsvda2i8gkllgts2rsnl6ab1eir.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

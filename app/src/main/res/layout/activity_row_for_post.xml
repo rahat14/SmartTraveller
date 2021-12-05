@@ -183,7 +183,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="25dp"
             android:layout_marginTop="2dp"
-            android:background="@drawable/share"
+            android:background="@drawable/share2"
             android:layout_height="25dp"/>
 
         <TextView

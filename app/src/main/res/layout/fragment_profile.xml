@@ -28,7 +28,7 @@
                     android:layout_height="@dimen/_60sdp"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:src="@drawable/placeholder" />
+                    android:src="@drawable/traveller" />
             </LinearLayout>
 
             <LinearLayout
@@ -37,6 +37,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight=".5"
                 android:layout_marginTop="@dimen/_2sdp"
+
                 android:orientation="vertical">
 
                 <TextView

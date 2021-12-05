@@ -374,6 +374,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="160dp"
+                android:visibility="gone"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:elevation="10dp"
@@ -391,7 +392,8 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/placeholder" />
+                        android:backgroundTint="@color/purple_700"
+                        android:background="@drawable/logout" />
 
 
                     <TextView

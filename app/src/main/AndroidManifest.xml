@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.metacoder.transalvania">
+    package="com.metacoder.smart_traveler">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -17,58 +17,58 @@
         android:theme="@style/Theme.TranSalVania"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.Events.CreateEventPage"
+            android:name="com.metacoder.smart_traveler.ui.Events.CreateEventPage"
             android:exported="false" />
         <activity
-            android:name=".ui.resetPassword.ResetPassword"
+            android:name="com.metacoder.smart_traveler.ui.resetPassword.ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".ui.budget.BudgetDetails"
+            android:name="com.metacoder.smart_traveler.ui.budget.BudgetDetails"
             android:exported="false" />
         <activity
-            android:name=".ui.budget.BudgetListPage"
+            android:name="com.metacoder.smart_traveler.ui.budget.BudgetListPage"
             android:exported="false" />
         <activity
-            android:name=".ui.locations.PlacesCategory"
+            android:name="com.metacoder.smart_traveler.ui.locations.PlacesCategory"
             android:exported="false" />
         <activity
-            android:name=".ui.SuccessPage"
+            android:name="com.metacoder.smart_traveler.ui.SuccessPage"
             android:exported="false" />
         <activity
-            android:name=".ui.emergency.EmergencyContactList"
+            android:name="com.metacoder.smart_traveler.ui.emergency.EmergencyContactList"
             android:exported="false" />
         <activity
-            android:name=".ui.nearme.Pace"
+            android:name="com.metacoder.smart_traveler.ui.nearme.Pace"
             android:exported="true" />
         <activity
-            android:name=".ui.Events.EventDetails"
+            android:name="com.metacoder.smart_traveler.ui.Events.EventDetails"
             android:exported="false" />
         <activity
-            android:name=".ui.services.BikeDetails"
+            android:name="com.metacoder.smart_traveler.ui.services.BikeDetails"
             android:exported="false" />
         <activity
-            android:name=".ui.services.HotelDetails"
+            android:name="com.metacoder.smart_traveler.ui.services.HotelDetails"
             android:exported="false" />
         <activity
-            android:name=".ui.Events.EventPage"
+            android:name="com.metacoder.smart_traveler.ui.Events.EventPage"
             android:exported="false" />
         <activity
-            android:name=".ui.services.BikePage"
+            android:name="com.metacoder.smart_traveler.ui.services.BikePage"
             android:exported="false" />
         <activity
-            android:name=".ui.timeline.CreatePostActivity"
+            android:name="com.metacoder.smart_traveler.ui.timeline.CreatePostActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.timeline.TimelinePage"
+            android:name="com.metacoder.smart_traveler.ui.timeline.TimelinePage"
             android:exported="false" />
         <activity
-            android:name=".ui.locations.LocationList"
+            android:name="com.metacoder.smart_traveler.ui.locations.LocationList"
             android:exported="false" />
         <activity
-            android:name=".ui.services.HotelPage"
+            android:name="com.metacoder.smart_traveler.ui.services.HotelPage"
             android:exported="false" />
         <activity
-            android:name=".ui.SplashScreen"
+            android:name="com.metacoder.smart_traveler.ui.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,12 +76,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.locations.LocationDetails" />
-        <activity android:name=".ui.auth.Register" />
-        <activity android:name=".ui.auth.SignIn" />
-        <activity android:name=".ui.WelcomeScreen" />
+        <activity android:name="com.metacoder.smart_traveler.ui.locations.LocationDetails" />
+        <activity android:name="com.metacoder.smart_traveler.ui.auth.Register" />
+        <activity android:name="com.metacoder.smart_traveler.ui.auth.SignIn" />
+        <activity android:name="com.metacoder.smart_traveler.ui.WelcomeScreen" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.metacoder.smart_traveler.ui.MainActivity"
             android:theme="@style/BaseTheme" />
 
         <meta-data
