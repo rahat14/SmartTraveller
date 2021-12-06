@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.metacoder.smart_traveler.R;
 import com.metacoder.smart_traveler.databinding.ActivityMainBinding;
+import com.metacoder.smart_traveler.ui.about.AboutUs;
 import com.metacoder.smart_traveler.ui.auth.SignIn;
 import com.metacoder.smart_traveler.ui.fragments.fragment_adapter;
 import com.metacoder.smart_traveler.ui.locations.PlacesCategory;
@@ -69,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBarDrawerToggle drawerToggle = setupDrawerToggle();
-
 
 
         binding.viewpager.setAdapter(new fragment_adapter(this));
@@ -125,10 +125,17 @@ public class MainActivity extends AppCompatActivity {
 // check selected menu item's id and replace a Fragment Accordingly
             if (itemId == R.id.places) {
                 startActivity(new Intent(getApplicationContext(), PlacesCategory.class));
-
             } else if (itemId == R.id.hotels) {
 
                 startActivity(new Intent(getApplicationContext(), HotelPage.class));
+            } else if (itemId == R.id.home) {
+                binding.viewpager.setCurrentItem(0);
+            } else if (itemId == R.id.share2) {
+                ShareLink();
+            } else if (itemId == R.id.contact) {
+                sendMail();
+            } else if (itemId == R.id.about_us) {
+                startActivity(new Intent(getApplicationContext(), AboutUs.class));
             } else if (itemId == R.id.log_out) {
                 FirebaseUser firebase = FirebaseAuth.getInstance().getCurrentUser();
                 if (firebase != null) {
@@ -137,9 +144,9 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), WelcomeScreen.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-                }else {
+                } else {
                     Intent intent = new Intent(getApplicationContext(), SignIn.class);
-                   // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
 
@@ -161,6 +168,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void ShareLink() {
+        /*Create an ACTION_SEND Intent*/
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        /*This will be the actual content you wish you share.*/
+        String shareBody = "Here is the share content body";
+        /*The type of the content is text, obviously.*/
+        intent.setType("text/plain");
+        /*Applying information Subject and Body.*/
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check Out My App.  link of the app ");
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        /*Fire!*/
+        startActivity(Intent.createChooser(intent, "Share Using"));
+    }
+
+
+    public void sendMail() {
+
+        try {
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject here");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "samarttravelerbd@gmail.com");
+            startActivity(Intent.createChooser(sharingIntent, "Sharing Option"));
+        } catch (android.content.ActivityNotFoundException e) {
+            Toast.makeText(getApplicationContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     private ActionBarDrawerToggle setupDrawerToggle() {
         // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
@@ -178,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                     // All required changes were successfully made
                     Log.i("TAG", "onActivityResult: GPS Enabled by user");
 
-                      startActivity(new Intent(getApplicationContext(), Pace.class));
+                    startActivity(new Intent(getApplicationContext(), Pace.class));
                     break;
                 case Activity.RESULT_CANCELED:
                     // The user was asked to change settings, but chose not to

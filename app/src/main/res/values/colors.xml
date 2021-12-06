@@ -10,7 +10,9 @@
     <color name="gray">#AEEDEDED</color>
     <color name="red">#E53935</color>
     <color name="green">#388E3C</color>
-
+    <color name="splash_screen_background1">#D81B60</color>
+    <color name="splash_screen_background2">#ffa203</color>
+    <color name="splash_screen_background3">#ff006a</color>
     <color name="overLayer">#88000000</color>
     <color name="yellow">#F57F17</color>
     <color name="hint_color">#C6C6C6</color>

@@ -1,45 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/home"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home" />
+    <group android:checkableBehavior="single">
 
-    <item
-        android:id="@+id/places"
-        android:icon="@drawable/bangladesh"
-        android:title="Places of Bangladesh" />
-    <item
-        android:id="@+id/hotels"
-        android:icon="@drawable/hotel"
-        android:title="Hotels" />
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home" />
 
-    <item
-        android:icon="@drawable/share2"
-        android:id="@+id/share2"
-        android:title="Share App" />
+        <item
+            android:id="@+id/log_out"
+            android:icon="@drawable/logout"
+            android:title="Log Out" />
+
+    </group>
 
 
-    <item
-        android:id="@+id/contact"
-        android:icon="@drawable/contact"
-        android:title="Contact Us" />
+    <item android:title="Get to know about">
 
-    <item
-        android:id="@+id/about_us"
-        android:icon="@drawable/about_us"
-        android:title="About Us" />
+        <menu>
 
-    <item
-        android:id="@+id/rate_us"
-        android:icon="@drawable/about_us"
-        android:title="Rate Us" />
+            <group android:checkableBehavior="single">
 
-    <item
-        android:id="@+id/log_out"
-        android:icon="@drawable/logout"
-        android:title="Log Out" />
+                <item
+                    android:id="@+id/places"
+                    android:icon="@drawable/bangladesh"
+                    android:title="Places of Bangladesh" />
+
+                <item
+                    android:id="@+id/hotels"
+                    android:icon="@drawable/hotel"
+                    android:title="Hotels and Resorts" />
+
+            </group>
+
+        </menu>
+
+
+    </item>
+
+
+    <item android:title="Information">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/faq"
+                    android:icon="@drawable/ic_faq"
+                    android:title="FAQ" />
+
+                <item
+                    android:id="@+id/about_us"
+                    android:icon="@drawable/ic_about_us"
+                    android:title="About Us" />
+
+                <item
+                    android:id="@+id/contact"
+                    android:icon="@drawable/ic_contact"
+                    android:title="Contact Us" />
+
+            </group>
+
+        </menu>
+
+
+    </item>
+
+
+    <item android:title="Others">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/settings"
+                    android:icon="@drawable/ic_settings"
+                    android:title="Settings" />
+
+                <item
+                    android:id="@+id/rate_us"
+                    android:icon="@drawable/about_us"
+                    android:title="Rate Us" />
+
+
+                <item
+                    android:id="@+id/share2"
+                    android:icon="@drawable/ic_share"
+                    android:title="Share App" />
+
+            </group>
+
+        </menu>
+
+
+    </item>
 
 
 </menu>
