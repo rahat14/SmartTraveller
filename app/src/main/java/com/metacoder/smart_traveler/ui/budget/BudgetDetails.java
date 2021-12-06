@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.metacoder.smart_traveler.databinding.ActivityBudgetDetailsBinding;
 import com.metacoder.smart_traveler.models.BudgetModel;
 import com.metacoder.smart_traveler.models.CalacModel;
-import com.metacoder.smart_traveler.ui.Events.BudgetListAdapter;
 
-public class BudgetDetails extends AppCompatActivity implements BudgetListAdapter.ItemClickListener {
+public class BudgetDetails extends AppCompatActivity implements CalclistAdapter.ItemClickListener {
     ActivityBudgetDetailsBinding binding;
-    BudgetListAdapter mAdapterr;
+    CalclistAdapter mAdapterr;
 
 
     @Override
@@ -30,7 +29,7 @@ public class BudgetDetails extends AppCompatActivity implements BudgetListAdapte
 
         binding.list.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        binding.list.setAdapter(new BudgetListAdapter(model.getBreakDowns(), this, this));
+        binding.list.setAdapter(new CalclistAdapter(model.getBreakDowns(), this, this));
 
 
 

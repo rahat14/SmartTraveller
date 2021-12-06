@@ -43,6 +43,7 @@
         <entry key="..\:/Projects/TranSalVania/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_bike_details.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_budget_details.xml" value="0.3343589743589744" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_budget_list_page.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_event_details.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_hotel_details.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_location_details.xml" value="0.1" />
@@ -53,7 +54,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

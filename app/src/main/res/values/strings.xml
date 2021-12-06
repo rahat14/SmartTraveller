@@ -6,4 +6,17 @@
     <string name="open">Open</string>
     <string name="close">close</string>
     <!--    //AIzaSyBS3SbqrLzvFV2wBO37r3olNrhYbT3Phng-->
+    <string-array name="range">
+        <item>৳1000</item>
+        <item>৳2000</item>
+        <item>৳3000</item>
+        <item>৳4000</item>
+        <item>৳5000</item>
+        <item>৳6000</item>
+        <item>৳7000</item>
+        <item>৳8000</item>
+        <item>৳9000</item>
+        <item>৳10000</item>
+    </string-array>
+
 </resources>

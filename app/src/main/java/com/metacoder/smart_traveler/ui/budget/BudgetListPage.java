@@ -2,28 +2,41 @@ package com.metacoder.smart_traveler.ui.budget;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.appyvet.materialrangebar.RangeBar;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.metacoder.smart_traveler.R;
 import com.metacoder.smart_traveler.databinding.ActivityBudgetListPageBinding;
 import com.metacoder.smart_traveler.models.BudgetModel;
 import com.metacoder.smart_traveler.viewholders.viewholderForBudgetListList;
 
-public class BudgetListPage extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class BudgetListPage extends AppCompatActivity implements BudgetListAdapter.ItemClickListener {
 
     ActivityBudgetListPageBinding binding;
-
+    DatabaseReference mref;
+    BudgetListAdapter mAdapter;
+    List<BudgetModel> loadedTours = new ArrayList<>();
+    List<BudgetModel> sortedList = new ArrayList<>();
+    String lowerLimit = "0", higherLimit = "10000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +47,61 @@ public class BudgetListPage extends AppCompatActivity {
         getSupportActionBar().setTitle("Tour Budget");
         binding.list.setLayoutManager(new LinearLayoutManager(this));
 
-        loadTripData();
-//        for (int i = 0; i < 10; i++) {
-//
-//            List<CalacModel> list = new ArrayList<>();
-//            list.add(new CalacModel("Test Description", "100"));
-//            list.add(new CalacModel("Test Description", "100"));
-//            list.add(new CalacModel("Test Description", "100"));
-//            list.add(new CalacModel("Test Description", "100"));
-//            list.add(new CalacModel("Test Description", "100"));
-//            //   String id, String total, String from, String tol, String title, int upperLimit, int lowerLimit, List<CalacModel> breakDowns
-//            BudgetModel model = new BudgetModel(i + "", "10000", "Test", "Test", "Test Title", 1500, 2500, list);
-//            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Budget_Model_Tour_List").child(i + "");
-//            databaseReference.setValue(model);
-//
-//        }
+        // loadTripData();
+        loadBudgetList();
+        binding.rangebar1.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
+            @Override
+            public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex, int rightPinIndex, String leftPinValue, String rightPinValue) {
+                higherLimit = rightPinValue;
+                lowerLimit = leftPinValue;
+                Log.d("TAG", "onRangeChangeListener: " + higherLimit + "  -> " + lowerLimit);
+            }
 
+            @Override
+            public void onTouchEnded(RangeBar rangeBar) {
+
+            }
+
+            @Override
+            public void onTouchStarted(RangeBar rangeBar) {
+
+            }
+        });
+        binding.filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fillterBudgetList();
+            }
+        });
+
+        binding.reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.rangebar1.setRangePinsByIndices(0, 9);
+
+                loadBudgetList();
+
+            }
+        });
+
+
+    }
+
+    private void fillterBudgetList() {
+        sortedList.clear();
+        for (BudgetModel model : loadedTours) {
+            if (Integer.parseInt(model.getTotal()) >= Integer.parseInt(lowerLimit) && Integer.parseInt(model.getTotal()) <= Integer.parseInt(higherLimit)) {
+                sortedList.add(model);
+            }
+        }
+
+        mAdapter = new BudgetListAdapter(sortedList, BudgetListPage.this, BudgetListPage.this);
+        if (sortedList.size() <= 0) {
+            Toast.makeText(getApplicationContext(), "There is no Tour On Your Budget", Toast.LENGTH_LONG).show();
+        }
+
+        Log.d("TAG", "fillterBudgetList:  size  " + sortedList.size() + " Hugher Limity" + higherLimit + " lower limit " + lowerLimit);
+        binding.list.setAdapter(mAdapter);
     }
 
     @Override
@@ -78,8 +130,8 @@ public class BudgetListPage extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        Intent p = new Intent(getApplicationContext(), BudgetDetails.class) ;
-                        p.putExtra("MODEL" , model);
+                        Intent p = new Intent(getApplicationContext(), BudgetDetails.class);
+                        p.putExtra("MODEL", model);
                         startActivity(p);
 
                     }
@@ -102,4 +154,42 @@ public class BudgetListPage extends AppCompatActivity {
 
     }
 
+
+    private void loadBudgetList() {
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Budget_Model_Tour_List");
+        loadedTours.clear();
+
+        mref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                loadedTours.clear();
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    BudgetModel eventModel = ds.getValue(BudgetModel.class);
+
+                    loadedTours.add(eventModel);
+                }
+                mAdapter = new BudgetListAdapter(loadedTours, BudgetListPage.this, BudgetListPage.this);
+                binding.list.setAdapter(mAdapter);
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+
+            }
+        });
+    }
+
+
+    @Override
+    public void onItemClick(BudgetModel model) {
+        Intent p = new Intent(getApplicationContext(), BudgetDetails.class);
+        p.putExtra("MODEL", model);
+        startActivity(p);
+
+    }
 }

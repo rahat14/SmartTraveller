@@ -1,4 +1,4 @@
-package com.metacoder.smart_traveler.ui.Events;
+package com.metacoder.smart_traveler.ui.budget;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -18,13 +18,13 @@ import java.util.List;
 
 /*** Created by Rahat Shovo on 11/17/2021 
  */
-public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.viewholder> {
+public class CalclistAdapter extends RecyclerView.Adapter<CalclistAdapter.viewholder> {
 
     private final Context context;
     private List<CalacModel> items;
     private ItemClickListener itemClickListener;
 
-    public BudgetListAdapter(List<CalacModel> items, Context context, ItemClickListener itemClickListener) {
+    public CalclistAdapter(List<CalacModel> items, Context context, ItemClickListener itemClickListener) {
         this.items = items;
         this.context = context;
         this.itemClickListener = itemClickListener;

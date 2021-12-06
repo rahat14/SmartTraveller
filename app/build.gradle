@@ -76,5 +76,5 @@ dependencies {
     implementation 'com.github.dhaval2404:imagepicker:2.1'//
 
     implementation 'com.google.android.libraries.places:places:2.5.0'
-    
+    implementation 'com.appyvet:materialrangebar:1.4.8'
 }
