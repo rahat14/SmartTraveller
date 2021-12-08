@@ -2,6 +2,8 @@ package com.metacoder.smart_traveler.ui.services;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.metacoder.smart_traveler.R;
 import com.metacoder.smart_traveler.databinding.ActivityHotelPageBinding;
 import com.metacoder.smart_traveler.models.HotelModel;
@@ -31,8 +34,30 @@ public class HotelPage extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Hotels");
         binding.hotelLIst.setLayoutManager(new LinearLayoutManager(this));
+        binding.search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-        loadTripData();
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String  q  = s.toString().trim() ;
+                if(q.isEmpty()){
+                    loadTripData("");
+                }else {
+                    loadTripData(q);
+                }
+
+            }
+        });
+        loadTripData("");
 
     }
 
@@ -45,12 +70,12 @@ public class HotelPage extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void loadTripData() {
+    private void loadTripData(String q) {
         DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Hotel_Services");
         FirebaseRecyclerOptions<HotelModel> options;
         FirebaseRecyclerAdapter<HotelModel, viewholderForHotelList> firebaseRecyclerAdapter;
-
-        options = new FirebaseRecyclerOptions.Builder<HotelModel>().setQuery(mref, HotelModel.class).build();
+        Query firebaseQry = mref.orderByChild("location").startAt(q.toLowerCase()).endAt(q.toLowerCase()+ "\uf8ff");
+        options = new FirebaseRecyclerOptions.Builder<HotelModel>().setQuery(firebaseQry, HotelModel.class).build();
 
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<HotelModel, viewholderForHotelList>(options) {
             @Override

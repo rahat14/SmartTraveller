@@ -36,6 +36,7 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentSearchBinding.inflate(inflater, container, false);
         binding.list.setLayoutManager(new LinearLayoutManager(getContext()));
+
         return binding.getRoot();
     }
 

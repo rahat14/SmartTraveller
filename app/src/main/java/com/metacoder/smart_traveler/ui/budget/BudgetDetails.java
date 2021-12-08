@@ -1,7 +1,9 @@
 package com.metacoder.smart_traveler.ui.budget;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -20,7 +22,7 @@ public class BudgetDetails extends AppCompatActivity implements CalclistAdapter.
 
         binding = ActivityBudgetDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         BudgetModel model = (BudgetModel) getIntent().getSerializableExtra("MODEL");
 
@@ -40,4 +42,14 @@ public class BudgetDetails extends AppCompatActivity implements CalclistAdapter.
     public void onItemClick(CalacModel model) {
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
