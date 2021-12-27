@@ -3,12 +3,10 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#FDF1E837"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
+    android:background="#FDF1E837"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,27 +29,28 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-          <RelativeLayout
-              android:id="@+id/ppContianer"
-              android:layout_marginTop="@dimen/_14sdp"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/ppContianer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_14sdp">
 
-              <de.hdodenhof.circleimageview.CircleImageView
-                  android:id="@+id/pp"
-                  android:layout_width="100dp"
-                  android:layout_height="100dp"
-                  android:layout_centerInParent="true"
-                  android:src="@drawable/placeholder" />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_toEndOf="@+id/pp"
-                  android:layout_alignParentBottom="true"
-                  android:layout_marginStart="-10dp"
-                  android:text="Click To Change"
-                  android:layout_height="wrap_content"/>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/pp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/placeholder" />
 
-          </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="-10dp"
+                    android:layout_toEndOf="@+id/pp"
+                    android:text="Click To Change" />
+
+            </RelativeLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -139,8 +138,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
 
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:id="@+id/passContianer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_16sdp"
@@ -149,8 +148,8 @@
                 android:layout_marginBottom="@dimen/_2sdp"
                 app:boxStrokeColor="@color/primary_text_clr"
                 app:hintAnimationEnabled="true"
-                app:passwordToggleEnabled="true"
-                app:hintTextColor="@color/primary_text_clr">
+                app:hintTextColor="@color/primary_text_clr"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/PersonPass"
@@ -179,7 +178,7 @@
                 android:layout_marginBottom="@dimen/_2sdp"
                 app:boxStrokeColor="@color/primary_text_clr"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/primary_text_clr"/>
+                app:hintTextColor="@color/primary_text_clr" />
         </LinearLayout>
     </ScrollView>
 

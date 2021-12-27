@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "853338194045-npbar7sd4so45vtk74uceh6aqfe2ft4v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.metacoder.smart_traveler",
+            "certificate_hash": "8c2f1add033ab74ce9f424a95c6aa0ed1cc66771"
+          }
+        },
+        {
           "client_id": "853338194045-d9sq1dsvda2i8gkllgts2rsnl6ab1eir.apps.googleusercontent.com",
           "client_type": 3
         }

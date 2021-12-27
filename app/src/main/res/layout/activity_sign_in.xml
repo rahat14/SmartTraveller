@@ -99,7 +99,49 @@
             android:layout_height="@dimen/_45sdp"
             app:cornerRadius="@dimen/_16sdp"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
 
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_marginHorizontal="@dimen/_2sdp"
+                android:background="@color/white"
+                android:layout_height="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="OR"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="@dimen/_2sdp"
+                android:textStyle="bold"
+                android:fontFamily="@font/sofia_pro_medium"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_marginHorizontal="@dimen/_2sdp"
+                android:background="@color/white"
+                android:layout_height="2dp"/>
+
+        </LinearLayout>
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Text"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
