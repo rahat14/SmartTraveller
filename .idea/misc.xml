@@ -41,18 +41,29 @@
         <entry key="..\:/Projects/TranSalVania/app/src/main/res/menu/menu_bottom_main.xml" value="0.33425925925925926" />
         <entry key="..\:/Projects/TranSalVania/app/src/main/res/menu/nav_items.xml" value="0.340625" />
         <entry key="..\:/Projects/TranSalVania/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_about_us.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_bike_details.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_bike_page.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_budget_details.xml" value="0.3343589743589744" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_budget_list_page.xml" value="0.33958333333333335" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_create_event_page.xml" value="0.33958333333333335" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_create_post.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_emergency_contact_list.xml" value="0.3287037037037037" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_event_details.xml" value="0.33958333333333335" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_event_page.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_hotel_details.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_hotel_page.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_location_details.xml" value="0.1" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_location_list.xml" value="0.33958333333333335" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_main.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_pace.xml" value="0.1" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_places_category.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_reset_password.xml" value="0.33958333333333335" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_row_for_post.xml" value="0.33958333333333335" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_settings.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_sign_in.xml" value="0.3343589743589744" />
+        <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/activity_welcome_screen.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/SIMEC/AndroidStudioProjects/oldBusiness/TranSalVania/app/src/main/res/layout/fragment_profile.xml" value="0.33958333333333335" />
       </map>
     </option>

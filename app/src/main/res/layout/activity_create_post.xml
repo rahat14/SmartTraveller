@@ -82,7 +82,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:fontFamily="@font/sofia_pro_medium"
-            android:hint="Something in Your Mind"
+            android:hint="@string/something_in_your_mind"
             android:minWidth="150dp"
             android:textColor="@color/white"
             android:textColorHint="@color/grey_600"

@@ -4,16 +4,36 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
+import android.os.Build;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.Locale;
 
 public class Utils {
     /*
     these methods are common methods
      */
+    public static Context localeUpdateResources(Context context, String languageCode) {
+
+        Context newContext = context;
+
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+
+        Resources resources = context.getResources();
+        Configuration config = new Configuration(resources.getConfiguration());
+
+        config.setLocale(locale);
+        newContext = context.createConfigurationContext(config);
+
+        return newContext;
+
+    }
     public static String getMimeType(Context context, Uri uri) {
         String extension;
 

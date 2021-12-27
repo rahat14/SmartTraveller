@@ -23,7 +23,7 @@
 
         <TextView
 
-            android:text="Where Do You Want To Plan Your Next Trip?"
+            android:text="@string/where_do_you_want_to_plan_your_next_trip"
             android:textColor="#152046"
             android:fontFamily="@font/sofia_pro_medium"
             android:textSize="38sp"

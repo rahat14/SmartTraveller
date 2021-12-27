@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/_24sdp"
         android:fontFamily="@font/sofia_pro_medium"
         android:gravity="center"
-        android:text="Lets Get Started."
+        android:text="@string/lets_get_started"
         android:textColor="@color/primary_text_clr"
         android:textSize="@dimen/_24ssp" />
 
@@ -68,7 +68,7 @@
                     android:id="@+id/Personname"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:hint="Your Name"
+                    android:hint="@string/your_name"
                     android:inputType="text"
                     android:paddingStart="@dimen/_24sdp"
                     android:paddingTop="@dimen/_2sdp"
@@ -97,7 +97,7 @@
                     android:id="@+id/PersonEmail"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:hint="Your Email"
+                    android:hint="@string/your_email"
                     android:inputType="textEmailAddress"
                     android:paddingStart="@dimen/_24sdp"
                     android:paddingTop="@dimen/_2sdp"
@@ -125,7 +125,7 @@
                     android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:hint="Your Phone"
+                    android:hint="@string/your_phone"
                     android:inputType="phone"
                     android:paddingStart="@dimen/_24sdp"
                     android:paddingTop="@dimen/_2sdp"
@@ -155,7 +155,7 @@
                     android:id="@+id/PersonPass"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:paddingStart="@dimen/_24sdp"
                     android:paddingTop="@dimen/_2sdp"
@@ -209,7 +209,7 @@
             android:layout_marginEnd="@dimen/_24sdp"
             android:backgroundTint="@color/button_clr"
             android:fontFamily="@font/sofia_pro_medium"
-            android:text="Sign Up"
+            android:text="@string/sign_up"
             android:textSize="@dimen/_14sdp"
             android:textStyle="bold"
             app:cornerRadius="@dimen/_16sdp" />
@@ -230,7 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sofia_pro_light"
-                android:text="Already Have Account"
+                android:text="@string/already_have_account"
                 android:textColor="@color/text_clr"
                 android:textSize="@dimen/_14ssp" />
 
@@ -240,7 +240,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4sdp"
                 android:fontFamily="@font/sofia_pro_medium"
-                android:text="Sign In"
+                android:text="@string/sign_in"
                 android:textColor="@color/primary_text_clr"
                 android:textSize="@dimen/_14ssp" />
 

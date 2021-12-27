@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:text="Need Budget Tours ?"
+            android:text="@string/need_budget_tours"
             android:textColor="#152046"
             android:fontFamily="@font/sofia_pro_medium"
             android:textSize="28sp"
@@ -66,19 +66,19 @@
            android:layout_gravity="end"
            android:layout_marginHorizontal="@dimen/_8sdp"
            android:layout_toStartOf="@id/reset"
-           android:textColor="@color/white"
-           android:text="fillter" />
+           android:text="@string/fillter"
+           android:textColor="@color/white" />
 
        <com.google.android.material.button.MaterialButton
            android:id="@+id/reset"
-           android:textColor="@color/white"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignParentEnd="true"
            android:layout_gravity="end"
            android:layout_marginHorizontal="@dimen/_8sdp"
            android:backgroundTint="@color/green"
-           android:text="reset" />
+           android:text="@string/reset"
+           android:textColor="@color/white" />
    </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView

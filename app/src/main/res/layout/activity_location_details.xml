@@ -171,7 +171,7 @@
                 android:insetBottom="0dp"
                 android:fontFamily="@font/sofia_pro_medium"
                 android:textSize="@dimen/_16ssp"
-                android:text="Book Now"
+                android:text="@string/book_now"
                 android:backgroundTint="@color/button_clr"
                 android:layout_height="wrap_content"/>
 
@@ -186,7 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sofia_pro_medium"
-                    android:text="User Reviews"
+                    android:text="@string/user_reviews"
                     android:textColor="#152046"
                     android:textSize="@dimen/_16ssp"
                     android:visibility="visible"
@@ -209,7 +209,7 @@
                     android:backgroundTint="@color/button_clr"
                     android:fontFamily="@font/sofia_pro_medium"
                     android:insetBottom="0dp"
-                    android:text = "Leave A Review"
+                    android:text = "@string/leave_a_review"
                     android:textSize="@dimen/_14ssp"
                     android:visibility="visible" />
             </LinearLayout>

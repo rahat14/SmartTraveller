@@ -1,7 +1,9 @@
 package com.metacoder.smart_traveler.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import com.metacoder.smart_traveler.databinding.ActivityWelcomeScreenBinding;
 import com.metacoder.smart_traveler.ui.auth.Register;
 import com.metacoder.smart_traveler.ui.auth.SignIn;
 import com.metacoder.smart_traveler.utils.SliderAdapterExample;
+import com.metacoder.smart_traveler.utils.Utils;
 import com.metacoder.smart_traveler.utils.sliderItem;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -93,5 +96,15 @@ public class WelcomeScreen extends AppCompatActivity {
 
 
     }
-
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        SharedPreferences prefs = base.getSharedPreferences("uinfo", MODE_PRIVATE);
+//        String restoredText = prefs.getString("lang", "bd");
+//
+//        if (restoredText.equals("bd")){
+//            super.attachBaseContext(Utils.localeUpdateResources(base, "bd"));
+//        }else{
+//            super.attachBaseContext(Utils.localeUpdateResources(base, "en"));
+//        }
+//    }
 }

@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:fontFamily="@font/sofia_pro_medium"
-                android:text="Book Room"
+                android:text="@string/book_room"
                 android:textColor="#152046"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
@@ -151,13 +151,13 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
 
-                    android:text="Single Room" />
+                    android:text="@string/single_room" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Double Room" />
+                    android:text="@string/double_room" />
             </RadioGroup>
 
 
@@ -170,7 +170,7 @@
                 android:backgroundTint="@color/button_clr"
                 android:fontFamily="@font/sofia_pro_medium"
                 android:insetBottom="0dp"
-                android:text="Book Now"
+                android:text="@string/book_now"
                 android:textSize="@dimen/_14ssp"
                 android:visibility="visible" />
 
@@ -182,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_16sdp"
             android:fontFamily="@font/sofia_pro_medium"
-            android:text="User Reviews"
+            android:text="@string/user_reviews"
             android:textColor="#152046"
             android:layout_marginVertical="@dimen/_8sdp"
             android:textSize="@dimen/_14ssp"
@@ -204,7 +204,7 @@
             android:backgroundTint="@color/button_clr"
             android:fontFamily="@font/sofia_pro_medium"
             android:insetBottom="0dp"
-            android:text = "Leave A Review"
+            android:text = "@string/leave_a_review"
             android:textSize="@dimen/_14ssp"
             android:visibility="visible" />
 

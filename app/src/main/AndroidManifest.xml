@@ -17,6 +17,9 @@
         android:theme="@style/Theme.TranSalVania"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.Settings"
+            android:exported="false" />
+        <activity
             android:name=".ui.about.AboutUs"
             android:exported="false" />
         <activity
