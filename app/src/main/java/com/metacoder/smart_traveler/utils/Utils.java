@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
-import android.os.Build;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
@@ -34,6 +33,17 @@ public class Utils {
         return newContext;
 
     }
+
+    public static  void setLocal(Context context , String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        context.getResources().updateConfiguration(config,
+                context.getResources().getDisplayMetrics());
+
+    }
+
     public static String getMimeType(Context context, Uri uri) {
         String extension;
 

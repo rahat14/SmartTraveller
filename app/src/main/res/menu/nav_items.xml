@@ -6,17 +6,17 @@
         <item
             android:id="@+id/home"
             android:icon="@drawable/ic_baseline_home_24"
-            android:title="Home" />
+            android:title="@string/home" />
 
         <item
             android:id="@+id/log_out"
             android:icon="@drawable/logout"
-            android:title="Log Out" />
+            android:title="@string/log_out" />
 
     </group>
 
 
-    <item android:title="Get to know about">
+    <item android:title="@string/get_to_know_about">
 
         <menu>
 
@@ -25,12 +25,12 @@
                 <item
                     android:id="@+id/places"
                     android:icon="@drawable/bangladesh"
-                    android:title="Places of Bangladesh" />
+                    android:title="@string/places_of_bangladesh" />
 
                 <item
                     android:id="@+id/hotels"
                     android:icon="@drawable/hotel"
-                    android:title="Hotels and Resorts" />
+                    android:title="@string/hotels_and_resorts" />
 
             </group>
 
@@ -40,7 +40,7 @@
     </item>
 
 
-    <item android:title="Information">
+    <item android:title="@string/information">
 
         <menu>
 
@@ -49,17 +49,17 @@
                 <item
                     android:id="@+id/faq"
                     android:icon="@drawable/ic_faq"
-                    android:title="FAQ" />
+                    android:title="@string/faq" />
 
                 <item
                     android:id="@+id/about_us"
                     android:icon="@drawable/ic_about_us"
-                    android:title="About Us" />
+                    android:title="@string/about_us" />
 
                 <item
                     android:id="@+id/contact"
                     android:icon="@drawable/ic_contact"
-                    android:title="Contact Us" />
+                    android:title="@string/contact_us" />
 
             </group>
 
@@ -78,18 +78,18 @@
                 <item
                     android:id="@+id/settings"
                     android:icon="@drawable/ic_settings"
-                    android:title="Settings" />
+                    android:title="@string/settings" />
 
                 <item
                     android:id="@+id/rate_us"
                     android:icon="@drawable/about_us"
-                    android:title="Rate Us" />
+                    android:title="@string/rate_us" />
 
 
                 <item
                     android:id="@+id/share2"
                     android:icon="@drawable/ic_share"
-                    android:title="Share App" />
+                    android:title="@string/share_app" />
 
             </group>
 

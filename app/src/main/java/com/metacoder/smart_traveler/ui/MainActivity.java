@@ -134,7 +134,10 @@ public class MainActivity extends AppCompatActivity {
                 ShareLink();
             } else if (itemId == R.id.contact) {
                 sendMail();
-            } else if (itemId == R.id.about_us) {
+            }else  if (itemId == R.id.settings){
+                startActivity(new Intent(getApplicationContext(), Settings.class));
+            }
+            else if (itemId == R.id.about_us) {
                 startActivity(new Intent(getApplicationContext(), AboutUs.class));
             } else if (itemId == R.id.log_out) {
                 FirebaseUser firebase = FirebaseAuth.getInstance().getCurrentUser();

@@ -96,15 +96,5 @@ public class WelcomeScreen extends AppCompatActivity {
 
 
     }
-//    @Override
-//    protected void attachBaseContext(Context base) {
-//        SharedPreferences prefs = base.getSharedPreferences("uinfo", MODE_PRIVATE);
-//        String restoredText = prefs.getString("lang", "bd");
-//
-//        if (restoredText.equals("bd")){
-//            super.attachBaseContext(Utils.localeUpdateResources(base, "bd"));
-//        }else{
-//            super.attachBaseContext(Utils.localeUpdateResources(base, "en"));
-//        }
-//    }
+
 }

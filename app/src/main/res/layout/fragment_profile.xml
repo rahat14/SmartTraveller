@@ -75,7 +75,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:backgroundTint="@color/primary_text_clr"
                     android:fontFamily="@font/sofia_pro_medium"
-                    android:text="Edit Profile"
+                    android:text="@string/edit_profile"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:textStyle="bold" />
 
@@ -86,7 +86,7 @@
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:backgroundTint="@color/primary_text_clr"
                     android:fontFamily="@font/sofia_pro_medium"
-                    android:text="Log Out"
+                    android:text="@string/log_out"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -231,7 +231,7 @@
             android:layout_marginVertical="2dp"
             android:fontFamily="@font/sofia_pro_medium"
             android:visibility="visible"
-            android:text="Bookmarks"
+            android:text="@string/bookmarks"
             android:textSize="20sp" />
 
         <androidx.recyclerview.widget.RecyclerView
