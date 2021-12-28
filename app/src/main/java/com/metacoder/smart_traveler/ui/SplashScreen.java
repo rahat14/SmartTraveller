@@ -3,17 +3,23 @@ package com.metacoder.smart_traveler.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.metacoder.smart_traveler.R;
+
+import java.util.Locale;
 
 public class SplashScreen extends AppCompatActivity {
     ImageView splash;
@@ -41,7 +47,26 @@ public class SplashScreen extends AppCompatActivity {
         subtitle.setAnimation(bottom);
 
 //
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("uinfo", MODE_PRIVATE);
+        String restoredText = prefs.getString("lang", "en");
 
+        if (TextUtils.equals(restoredText, "en")) {
+            Locale locale = new Locale("en");
+            Locale.setDefault(locale);
+            Configuration configuration = new Configuration();
+            configuration.setLocale(locale);
+       //     Toast.makeText(getApplicationContext(), "en is set", Toast.LENGTH_SHORT).show();
+            getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+
+        } else {
+            Locale locale = new Locale("bn");
+            Locale.setDefault(locale);
+            Configuration configuration = new Configuration();
+            configuration.setLocale(locale);
+         //   Toast.makeText(getApplicationContext(), "bn is set", Toast.LENGTH_SHORT).show();
+            getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+
+        }
 
         handler.postDelayed(() -> {
 
