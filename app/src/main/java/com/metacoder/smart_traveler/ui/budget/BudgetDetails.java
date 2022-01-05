@@ -2,6 +2,7 @@ package com.metacoder.smart_traveler.ui.budget;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class BudgetDetails extends AppCompatActivity implements CalclistAdapter.
 
         binding.from.setText(model.getFrom());
         binding.to.setText(model.getTol());
+        binding.budgetTv.setText("৳ " +model.getTotal());
 
         binding.list.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
